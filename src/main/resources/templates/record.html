@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+<body>
+<form method="post" action="/record">
+    <fieldset>
+        <legend>Creating project</legend>
+        <br>
+        Project name:
+        <select name="service" required>
+            <option th:each="service : ${services}"
+                    th:selected="${serviceId > 0 && serviceId == service.getServiceId()}"
+                    th:value="${service.getServiceId()}" th:text="${service.getServiceName()}"></option>
+        </select>
+        <br><br>
+        <select name="master" required>
+            <option th:each="master : ${masters}" th:value="${master.getMasterId()}"
+                    th:text="${master.getMasterSurname() + ' ' + master.getMasterName()}"></option>
+        </select>
+        <input type="date" name="date" required>
+        <select name="recordTime" required>
+            <option th:each="recordTime : ${recordTime}" th:value="${recordTime.getTime()}"
+                    th:text="${recordTime.getTime()}"></option>
+        </select>
+    </fieldset>
+    <input type="submit">
+</form>
+<p th:if="${error != null}">Error</p>
+</body>
+</html>

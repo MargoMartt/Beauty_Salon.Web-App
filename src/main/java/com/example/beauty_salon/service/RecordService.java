@@ -1,6 +1,5 @@
 package com.example.beauty_salon.service;
 
-import com.example.beauty_salon.entity.BonusEntity;
 import com.example.beauty_salon.entity.RecordEntity;
 
 import java.util.List;
@@ -11,4 +10,5 @@ public interface RecordService {
 
     public void deleteRecord (int id);
     public List<RecordEntity> getAllRecord();
+    public boolean isRecord(int serviceId, int masterId, String date, String time);
 }

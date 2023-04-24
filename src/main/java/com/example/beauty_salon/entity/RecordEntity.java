@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 @Entity
 @Table(name = "record", schema = "salonbeauty", catalog = "")
@@ -21,10 +23,12 @@ public class RecordEntity {
     private String time;
     
     @Column(name = "date", nullable = true)
-    @Getter
     @Setter
     private Date date;
-    
+    public String getDate() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat.format(date);
+    }
     @Column(name = "total_cost", nullable = true, precision = 0)
     @Getter
     @Setter

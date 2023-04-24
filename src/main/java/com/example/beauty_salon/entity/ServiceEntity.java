@@ -27,10 +27,16 @@ public class ServiceEntity {
     @Getter
     @Setter
     private Double servicePrice;
+
+    @Column(name = "service_code", nullable = true, length = 45)
+    @Getter
+    @Setter
+    private String serviceCode;
     
     @Column(name = "master_id", nullable = false)
     @Getter
     @Setter
     private int masterId;
+
 
 }
