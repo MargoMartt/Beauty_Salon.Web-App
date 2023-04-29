@@ -2,6 +2,8 @@ package com.example.beauty_salon.service;
 
 import com.example.beauty_salon.entity.RecordEntity;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public interface RecordService {
@@ -11,4 +13,8 @@ public interface RecordService {
     public void deleteRecord (int id);
     public List<RecordEntity> getAllRecord();
     public boolean isRecord(int serviceId, int masterId, String date, String time);
+    public List<RecordEntity> countRecords(int id);
+
+    public ArrayList<RecordEntity> futureRecords(LocalDate date, int id);
+    public ArrayList<RecordEntity> recordHistory(LocalDate date, int id);
 }

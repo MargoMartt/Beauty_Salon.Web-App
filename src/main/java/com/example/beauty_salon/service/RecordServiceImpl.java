@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,5 +70,20 @@ public class RecordServiceImpl implements RecordService {
             }
         }
         return isRecord;
+    }
+
+    @Override
+    public List<RecordEntity> countRecords(int id) {
+        return recordRepository.getRecordEntitiesByIdUser(id);
+    }
+
+    @Override
+    public ArrayList<RecordEntity> futureRecords(LocalDate date, int id) {
+        return recordRepository.getRecordEntitiesByDateAfterAndIdUser(date, id);
+    }
+
+    @Override
+    public ArrayList<RecordEntity> recordHistory(LocalDate date, int id) {
+        return recordRepository.getRecordEntitiesByIdUserAndDateBefore(id, date);
     }
 }

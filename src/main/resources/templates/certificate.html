@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form method="post" action="/certificate">
+    <fieldset>
+        <legend>Certificate</legend>
+        <br>
+        <label  th:value="${certificates.get(0)}"  for="20">
+            <input
+                type="radio"
+                id="20"
+                th:value="${certificates.get(0)}"
+                name="certificate"
+            />
+            20
+        </label>
+        <label  th:value="${certificates.get(1)}"  for="50">
+            <input
+                    type="radio"
+                    id="50"
+                    th:value="${certificates.get(1)}"
+                    name="certificate"
+            />
+            50
+        </label>
+        <label  th:value="${certificates.get(2)}"  for="100">
+            <input
+                    type="radio"
+                    id="100"
+                    th:value="${certificates.get(2)}"
+                    name="certificate"
+            />
+            100
+        </label>
+        <label  th:value="${certificates.get(3)}"  for="200">
+            <input
+                    type="radio"
+                    id="200"
+                    th:value="${certificates.get(3)}"
+                    name="certificate"
+            />
+            200
+        </label>
+    </fieldset>
+    <input type="submit">
+</form>
+
+<p th:if="${response == 'noMoney'}">no Money</p>
+<p th:if="${response == 'alreadyExist'}">alreadyExist</p>
+<p th:if="${response == 'success'}">
+    <span th:text="${response}">
+    </span></p>
+
+</body>
+</html>

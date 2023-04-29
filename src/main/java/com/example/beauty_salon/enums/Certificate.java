@@ -1,5 +1,7 @@
 package com.example.beauty_salon.enums;
 
+import org.springframework.stereotype.Component;
+
 public enum Certificate {
     TWENTY(20),
     FIFTY(50),

@@ -48,11 +48,11 @@ public class RecordEntity {
     @Getter
     @Setter
     private UsersEntity usersByIdUser;
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "service_id", referencedColumnName = "service_id", nullable = false)
     @Getter
     @Setter
-    private ServiceEntity serviceByserviceId;
+    private ServiceEntity serviceByServiceId;
     
     @Override
     public String toString() {
@@ -64,7 +64,7 @@ public class RecordEntity {
                 ", idUser=" + idUser +
                 ", serviceId=" + serviceId +
                 ", usersByIdUser=" + usersByIdUser +
-                ", serviceByserviceId=" + serviceByserviceId +
+                ", serviceByserviceId=" + serviceByServiceId +
                 '}';
     }
 }

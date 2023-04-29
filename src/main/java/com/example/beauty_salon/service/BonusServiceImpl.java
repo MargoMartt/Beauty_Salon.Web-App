@@ -39,4 +39,9 @@ public class BonusServiceImpl implements BonusService{
         return bonusRepository.findAll();
     }
 
+    @Override
+    public BonusEntity getBonusByUser(int id) {
+        return bonusRepository.findBonusEntityByIdUser(id);
+    }
+
 }

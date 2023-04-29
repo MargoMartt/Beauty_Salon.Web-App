@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>
+    <span th:text="${masters.get(0).getMasterName + ' ' + masters.get(0).getMasterSurname()}"></span>
+</h2>
+<h2>
+    <span th:text="${masters.get(1).getMasterName() + ' '+ masters.get(1).getMasterSurname()}"></span>
+</h2>
+<h2>
+    <span th:text="${masters.get(2).getMasterName() + ' '+ masters.get(2).getMasterSurname()}"></span>
+</h2>
+<h2>
+    <span th:text="${masters.get(3).getMasterName() + ' '+ masters.get(3).getMasterSurname()}"></span>
+</h2>
+<h2>
+    <span th:text="${masters.get(4).getMasterName() + ' '+ masters.get(4).getMasterSurname()}"></span>
+</h2>
+<h2>
+    <span th:text="${masters.get(5).getMasterName() + ' ' + masters.get(5).getMasterSurname()}"></span>
+</h2>
+</body>
+</html>

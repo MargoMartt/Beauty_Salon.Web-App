@@ -6,6 +6,7 @@ import com.example.beauty_salon.dao.UsersRepository;
 import com.example.beauty_salon.entity.ServiceEntity;
 import com.example.beauty_salon.entity.UsersEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,5 +44,9 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public List<UsersEntity> getAllUser() {
         return repository.findAll();
+    }
+
+    public UsersEntity getByLogin(@NonNull String login){
+        return repository.getByLogin(login);
     }
 }

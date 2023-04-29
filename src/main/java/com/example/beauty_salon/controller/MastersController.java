@@ -1,9 +1,6 @@
 package com.example.beauty_salon.controller;
 
 import com.example.beauty_salon.entity.BeautyMastersEntity;
-import com.example.beauty_salon.entity.ServiceEntity;
-import com.example.beauty_salon.entity.UsersEntity;
-import com.example.beauty_salon.enums.RecordTime;
 import com.example.beauty_salon.models.MasterData;
 import com.example.beauty_salon.models.RecordData;
 import com.example.beauty_salon.models.ServiceData;
@@ -14,16 +11,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
 @Component
 @Controller
-public class MainController {
+public class MastersController {
+    @Autowired
+    MasterData masterData;
 
-    @RequestMapping("/main")
-    public String mainInfo(Model model) {
-        return "main";
+
+    @GetMapping("/masters")
+    public String masters(Model model) {
+        List<BeautyMastersEntity> bestMasters = masterData.bestMasters();
+        model.addAttribute("masters", bestMasters);
+        return "masters";
     }
+
 }

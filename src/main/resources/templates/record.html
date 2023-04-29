@@ -7,6 +7,7 @@
         <title>Title</title>
     </head>
 <body>
+
 <form method="post" action="/record">
     <fieldset>
         <legend>Creating project</legend>
@@ -31,5 +32,11 @@
     <input type="submit">
 </form>
 <p th:if="${error != null}">Error</p>
+
+<div th:if="${success != null}">
+    <span th:text="${serviceDone}"></span>
+    <span th:text="${date + ' ' + time}"></span>
+    <span th:text="${money}"></span>
+</div>
 </body>
 </html>
