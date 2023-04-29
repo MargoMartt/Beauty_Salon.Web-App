@@ -49,4 +49,24 @@ public class ProfileController {
         model.addAttribute("user", user);
         return "userInfo";
     }
+    @GetMapping("/info/changePassword")
+    public String changePassword(Model model) {
+        UserInfo user = profileModel.user(89);
+        model.addAttribute("user", user);
+        model.addAttribute(user.getCertificate());
+
+        return "userInfo";
+    }
+    @GetMapping("/info/giveCertificate")
+    public String giveCertificate(Model model) {
+        UserInfo user = profileModel.user(89);
+        model.addAttribute("user", user);
+        return "userInfo";
+    }
+    @GetMapping("/info/replenishBalance")
+    public String replenishBalance(Model model) {
+        UserInfo user = profileModel.user(89);
+        model.addAttribute("user", user);
+        return "userInfo";
+    }
 }
