@@ -6,6 +6,9 @@
     <title>Title</title>
 </head>
 <body>
+<span th:text="${user.getName() + ' ' + user.getSurname()}"></span>
+<br>
+
 <span th:text="${user.getEmail()}"></span>
 <br>
 <span th:text="${user.getBalance()}"></span>
@@ -13,10 +16,43 @@
 <span th:text="${user.getCertificate()}"></span>
 <br>
 <span th:text="${user.getBonus()}"></span>
+<br>
 
-<a th:href="@{/info/changePassword}">Change</a>
-<a th:href="@{/info/giveCertificate}">Give a certificate</a>
-<a th:href="@{/info/replenishBalance}">replenish the balance</a>
+<a th:href="@{/profile/info}">Change</a>
+<a th:href="@{/profile/info}">Give a certificate</a>
+<a th:href="@{/profile/info}">replenish the balance</a>
+<a th:href="@{/profile/info}">Change info</a>
 
+<br>
+<div th:if="${certificate!=0}">
+    <form action="/profile/info/giveCertificate" method="post">
+        <input type="text" th:id="email" name="email">
+        <span th:text="${certificate}"></span>
+        <input type="submit">
+    </form>
+    <span th:text="${answerCertificate}"></span>
+</div>
+<form action="/profile/info/changePassword" method="post">
+    <input type="text" th:id="oldPassword" name="oldPassword">
+    <input type="text" th:id="newPassword" name="newPassword">
+    <input type="text" th:id="newPassword2" name="newPassword2">
+    <input type="submit">
+</form>
+<span th:text="${answer}"></span>
+<br>
+<div>
+    <form action="/profile/info/replenishBalance" method="post">
+        <input type="number" th:id="card" name="card">
+        <input type="number" th:id="CVV" name="CVV">
+        <input type="number" th:id="sum" name="sum">
+        <input type="submit">
+    </form>
+</div>
+
+<form action="/profile/info/changeInfo" method="post">
+    <input type="text" th:id="name" name="name" th:value="${user.getName()}">
+    <input type="text" th:id="surname" name="surname" th:value="${user.getSurname()}">
+    <input type="submit">
+</form>
 </body>
 </html>

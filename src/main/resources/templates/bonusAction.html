@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<table>
+  <tbody>
+  <tr th:each="bonus : ${bonuses}">
+    <td th:text="${bonus.getUser()}">Departure</td>
+    <td th:text="${bonus.getEmail()}">Departure</td>
+    <td th:text="${bonus.getBonus()}">Name</td>
+    <td>
+      <a th:href="@{/admin/bonusAction/edit/{id}(id=${bonus.getIdBonus()})}">Edit</a>
+    </td>
+    <td>
+      <a th:href="@{/admin/bonusAction/delete/{id}(id=${bonus.getIdBonus()})}">Delete</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<a th:href="@{/admin/bonusAction/add}">Add</a></body>
+</html>

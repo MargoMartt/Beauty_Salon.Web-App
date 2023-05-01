@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" th:action="@{/admin/serviceAction/edit/{id}(id=${service.getServiceId()})}">
+    <input type="text" name="name" th:value="${service.getServiceName()}">
+    <br>
+    <select name="type" required>
+        <option th:each="type : ${types}"
+                th:value="${type.getCode()}" th:text="${type.getCode()}"
+                th:selected="${service.getServiceCode()==type.getCode()}">
+        </option>
+    </select>
+    <br>
+    <input type="number" name="cost" th:value="${service.getServicePrice()}">
+    <br>
+    <br><br>
+    <select name="master" required>
+        <option th:each="master : ${masters}" th:value="${master.getMasterId()}"
+                th:text="${master.getMasterSurname() + ' ' + master.getMasterName()}"
+                th:selected="${master.getMasterId()==service.getMasterId()}">
+
+        </option>
+    </select> <br>
+    <input type="submit">
+</form>
+</body>
+</html>

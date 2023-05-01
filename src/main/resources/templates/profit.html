@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr th:each="profit : ${profits}">
+        <td th:text="${profit.getName()}">Name</td>
+        <td th:text="${profit.getCount()}">Departure</td>
+        <td th:text="${profit.getCost()}">Name</td>
+        <td th:text="${profit.getFullProfit()}">Name</td>
+        <td th:text="${profit.getFinalProfit()}">Name</td>
+    </tr>
+</table>
+<span th:text="${resultProfit}"></span>
+</body>
+</html>

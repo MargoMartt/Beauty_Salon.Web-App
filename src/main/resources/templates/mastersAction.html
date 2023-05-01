@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Service</th>
+        <th>Cost</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="master : ${masters}">
+        <td th:text="${master.getMasterName() + ' ' + master.getMasterSurname()}">Name</td>
+        <td th:text="${master.getActivity()}">Departure</td>
+        <td th:text="${master.getWorkExperience()}">Name</td>
+        <td>
+            <a th:href="@{/admin/mastersAction/edit/{id}(id=${master.getMasterId()})}">Edit</a>
+        </td>
+        <td>
+            <a th:href="@{/admin/mastersAction/delete/{id}(id=${master.getMasterId()})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/admin/mastersAction/add}">Add</a></body>
+</html>

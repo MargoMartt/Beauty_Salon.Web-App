@@ -79,16 +79,62 @@ public class ProfileModel {
         user.setIdUser(id);
         user.setBalance(userEntity.getBalance());
         user.setEmail(userEntity.getLogin());
+        user.setName(userEntity.getUserName());
+        user.setSurname(userEntity.getUserSurname());
 
-        if (bonus!=null) {
+        if (bonus != null) {
             user.setIdBonus(bonus.getBonusId());
             user.setCertificate(bonus.getCertificate());
             user.setBonus(bonus.getDiscount());
-        }
-        else {
+        } else {
             user.setCertificate(0);
             user.setBonus(0);
         }
         return user;
+    }
+
+    public String giveCertificate(int idUser, String email, int cost) {
+
+        UsersEntity userGet = usersService.getByLogin(email);
+        BonusEntity userBonus = bonusService.getBonusByUser(idUser);
+        System.out.println("HI");
+        System.out.println(userGet);
+        System.out.println(email);
+        if (userGet == null)
+            return "noUser";
+        else {
+            System.out.println("Hi!!");
+            userGet.setBalance(userGet.getBalance() + cost);
+            usersService.saveUser(userGet);
+            userBonus.setCertificate(0);
+            bonusService.saveBonus(userBonus);
+            return "success";
+        }
+    }
+
+    public String newPassword(int idUser, String oldPassword, String newPassword, String newPassword2) {
+        UsersEntity user = usersService.getUser(idUser);
+
+        if (user.getPassword().equals(oldPassword)) {
+
+            if (newPassword.equals(newPassword2)) {
+
+                user.setPassword(newPassword);
+                usersService.saveUser(user);
+                return "success";
+            } else return "notTheSame";
+        } else return "notCorrectOldPassword";
+    }
+
+    public void replenishBalance(int idUser, Double sum) {
+        UsersEntity user = usersService.getUser(idUser);
+        user.setBalance(user.getBalance() + sum);
+        usersService.saveUser(user);
+    }
+    public void changeInfo(int id, String name, String surname){
+        UsersEntity user = usersService.getUser(id);
+        user.setUserName(name);
+        user.setUserSurname(surname);
+        usersService.saveUser(user);
     }
 }

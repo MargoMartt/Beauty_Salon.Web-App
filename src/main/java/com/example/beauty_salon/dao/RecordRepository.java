@@ -16,4 +16,8 @@ public interface RecordRepository extends JpaRepository<RecordEntity, Integer> {
 
     public ArrayList<RecordEntity> getRecordEntitiesByDateAfterAndIdUser(LocalDate date, int id);
     public ArrayList<RecordEntity> getRecordEntitiesByIdUserAndDateBefore(int id, LocalDate date);
+
+    public List<RecordEntity> getRecordEntitiesByDateAfterAndServiceId(LocalDate date, int id);
+    public List<RecordEntity> getRecordEntitiesByDateBeforeAndServiceId(LocalDate date, int id);
+    public ArrayList<RecordEntity> getRecordEntitiesByServiceId(int id);
 }

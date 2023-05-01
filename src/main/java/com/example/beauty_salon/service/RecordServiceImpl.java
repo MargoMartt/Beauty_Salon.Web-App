@@ -86,4 +86,19 @@ public class RecordServiceImpl implements RecordService {
     public ArrayList<RecordEntity> recordHistory(LocalDate date, int id) {
         return recordRepository.getRecordEntitiesByIdUserAndDateBefore(id, date);
     }
+
+    @Override
+    public List<RecordEntity> futureRecordsByService(LocalDate date, int id) {
+        return recordRepository.getRecordEntitiesByDateAfterAndServiceId(date, id);
+    }
+
+    @Override
+    public List<RecordEntity> pastRecordsByService(LocalDate date, int id) {
+        return recordRepository.getRecordEntitiesByDateBeforeAndServiceId(date, id);
+    }
+
+    @Override
+    public ArrayList<RecordEntity> recordsByService(int id) {
+        return recordRepository.getRecordEntitiesByServiceId(id);
+    }
 }

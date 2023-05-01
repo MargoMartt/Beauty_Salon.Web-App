@@ -41,4 +41,9 @@ public class ServiceServiceImpl implements ServiceService{
     public List<ServiceEntity> getAllServices() {
         return repository.findAll();
     }
+
+    @Override
+    public List<ServiceEntity> getServicesByMasterID(int id) {
+        return repository.getServiceEntitiesByMasterId(id);
+    }
 }

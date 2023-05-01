@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span th:text="${report.getUsersCount()}"> Users</span>
+<br>
+<span th:text="${report.getMastersCount()}"> MAsters </span>
+<br>
+<span th:text="${report.getServiceCount()}">services</span>
+<br>
+<span th:text="${report.getRecordCount()}">record</span>
+<br>
+<span th:text="${report.getCertificateCount()}">certificate</span>
+<br>
+<span th:text="${report.getDiscountCount()}">discount</span>
+<br>
+
+</body>
+</html>

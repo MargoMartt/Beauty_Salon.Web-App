@@ -47,26 +47,55 @@ public class ProfileController {
     public String info(Model model) {
         UserInfo user = profileModel.user(89);
         model.addAttribute("user", user);
+        model.addAttribute("certificate", user.getCertificate());
         return "userInfo";
     }
-    @GetMapping("/info/changePassword")
-    public String changePassword(Model model) {
-        UserInfo user = profileModel.user(89);
-        model.addAttribute("user", user);
-        model.addAttribute(user.getCertificate());
 
-        return "userInfo";
-    }
-    @GetMapping("/info/giveCertificate")
-    public String giveCertificate(Model model) {
+    @PostMapping("/info/changePassword")
+    public String changePassword(@RequestParam(name = "oldPassword", required = false) String oldPassword,
+                                 @RequestParam(name = "newPassword", required = false) String newPassword,
+                                 @RequestParam(name = "newPassword2", required = false) String newPassword2,
+                                 Model model) {
         UserInfo user = profileModel.user(89);
         model.addAttribute("user", user);
+        String answer = profileModel.newPassword(89, oldPassword, newPassword, newPassword2);
+        if (answer.equals("success"))
+            return "redirect:/profile/info";
+        else model.addAttribute("answer", answer);
         return "userInfo";
     }
-    @GetMapping("/info/replenishBalance")
-    public String replenishBalance(Model model) {
+
+    @PostMapping("/info/giveCertificate")
+    public String giveCertificate(@RequestParam(name = "email", required = false) String email, Model model) {
         UserInfo user = profileModel.user(89);
         model.addAttribute("user", user);
+        model.addAttribute("certificate", user.getCertificate());
+        String answerCertificate = profileModel.giveCertificate(89, email, user.getCertificate());
+        if (answerCertificate.equals("success"))
+            return "redirect:/profile/info";
+        else
+            model.addAttribute("answerCertificate", answerCertificate);
         return "userInfo";
+    }
+
+    @PostMapping("/info/replenishBalance")
+    public String replenishBalance(@RequestParam(name = "card", required = false) int card,
+                                   @RequestParam(name = "CVV", required = false) int CVV,
+                                   @RequestParam(name = "sum", required = false) Double sum,
+                                   Model model) {
+        UserInfo user = profileModel.user(89);
+        model.addAttribute("user", user);
+        profileModel.replenishBalance(89, sum);
+        return "redirect:/profile/info";
+    }
+
+    @PostMapping("/info/changeInfo")
+    public String changeInfo(@RequestParam(name = "name", required = false) String name,
+                             @RequestParam(name = "surname", required = false) String surname,
+                             Model model) {
+        UserInfo user = profileModel.user(89);
+        model.addAttribute("user", user);
+        profileModel.changeInfo(89, name, surname);
+        return "redirect:/profile/info";
     }
 }

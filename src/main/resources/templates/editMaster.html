@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form method="post" th:action="@{/admin/mastersAction/edit/{id}(id=${master.getMasterId()})}">
+<input type="text" name="name" th:value="${master.getMasterName()}">
+  <br>
+  <input type="text" name="surname" th:value="${master.getMasterSurname()}">
+  <br>
+  <input type="number" name="experience" th:value="${master.getWorkExperience()}">
+  <br>
+  <input type="text" name="activity" th:value="${master.getActivity()}">
+  <br>
+  <input type="submit">
+</form>
+</body>
+</html>

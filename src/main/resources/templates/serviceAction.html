@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<table>
+  <tbody>
+  <tr th:each="service : ${services}">
+    <td th:text="${service.getServiceName()}">Name</td>
+    <td th:text="${service.getServiceCode()}">Departure</td>
+    <td th:text="${service.getMasterName()}">Name</td>
+    <td th:text="${service.getCost()}">Name</td>
+    <td>
+      <a th:href="@{/admin/serviceAction/edit/{id}(id=${service.getIdService()})}">Edit</a>
+    </td>
+    <td>
+      <a th:href="@{/admin/serviceAction/delete/{id}(id=${service.getIdService()})}">Delete</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<a th:href="@{/admin/serviceAction/add}">Add</a></body>
+</html>

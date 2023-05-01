@@ -10,4 +10,5 @@ public interface ServiceService {
 
     public void deleteService (int id);
     public List<ServiceEntity> getAllServices();
+    public List<ServiceEntity> getServicesByMasterID(int id);
 }
