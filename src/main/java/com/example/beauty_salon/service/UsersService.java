@@ -1,6 +1,5 @@
 package com.example.beauty_salon.service;
 
-import com.example.beauty_salon.entity.ServiceEntity;
 import com.example.beauty_salon.entity.UsersEntity;
 import org.springframework.lang.NonNull;
 

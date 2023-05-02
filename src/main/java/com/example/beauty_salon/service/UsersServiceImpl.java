@@ -1,9 +1,7 @@
 package com.example.beauty_salon.service;
 
 
-import com.example.beauty_salon.dao.ServiceRepository;
 import com.example.beauty_salon.dao.UsersRepository;
-import com.example.beauty_salon.entity.ServiceEntity;
 import com.example.beauty_salon.entity.UsersEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
@@ -46,7 +44,9 @@ public class UsersServiceImpl implements UsersService {
         return repository.findAll();
     }
 
+    @Override
     public UsersEntity getByLogin(@NonNull String login){
         return repository.getByLogin(login);
     }
+
 }

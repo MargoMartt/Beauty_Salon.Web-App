@@ -1,10 +1,7 @@
 package com.example.beauty_salon.service;
 
-import com.example.beauty_salon.dao.RecordRepository;
-import com.example.beauty_salon.dao.RoleHasUsersRepository;
 import com.example.beauty_salon.dao.ServiceRepository;
 import com.example.beauty_salon.entity.ServiceEntity;
-import com.example.beauty_salon.entity.UsersHasRoleEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

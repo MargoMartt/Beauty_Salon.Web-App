@@ -3,26 +3,124 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-<h2>
-    <span th:text="${masters.get(0).getMasterName + ' ' + masters.get(0).getMasterSurname()}"></span>
-</h2>
-<h2>
-    <span th:text="${masters.get(1).getMasterName() + ' '+ masters.get(1).getMasterSurname()}"></span>
-</h2>
-<h2>
-    <span th:text="${masters.get(2).getMasterName() + ' '+ masters.get(2).getMasterSurname()}"></span>
-</h2>
-<h2>
-    <span th:text="${masters.get(3).getMasterName() + ' '+ masters.get(3).getMasterSurname()}"></span>
-</h2>
-<h2>
-    <span th:text="${masters.get(4).getMasterName() + ' '+ masters.get(4).getMasterSurname()}"></span>
-</h2>
-<h2>
-    <span th:text="${masters.get(5).getMasterName() + ' ' + masters.get(5).getMasterSurname()}"></span>
-</h2>
+<section class="topSection">
+    <div class="topSection__header">
+        <header class="header">
+            <div class="content header__content"><a class="header__contact-link" href="tel:80177711177">8(017771 11
+                77)</a>
+                <nav><a href="/main">Main</a><a href="/serviceBody">Services</a><a href="/masters">Masters</a><a
+                        href="/certificate">Certificate</a><a href="/profile/futureRecords">Profile</a></nav>
+            </div>
+        </header>
+    </div><img class="topSection__image" src="/images/d9e2b378364335.5ca302525d922.jpg" alt="">
+    <div class="content topSection__content">
+        <h1>MASTERS</h1>
+    </div>
+</section>
+<div class="services"></div>
+<section class="section bestMastersSection">
+    <div class="content">
+        <div class="bestMastersSection__title">
+            <h2 class="title">The best masters
+                <div class="title__shadow">
+                    <p>The best masters</p>
+                </div>
+            </h2>
+        </div>
+        <div class="masterInfo">
+            <div class="masterInfo__left"><img class="masterInfo__image" src="/images/1fe40b160278027.63b19d2c1b302.jpg" alt=""></div>
+            <div class="masterInfo__right">
+                <h2 class="title">Body care
+                    <div class="title__shadow">
+                        <p>Body care</p>
+                    </div>
+                </h2>
+                <p class="masterInfo__name"> <span th:text="${masters.get(0).getMasterName + ' ' + masters.get(0).getMasterSurname()}"></span></p>
+                <p class="masterInfo__description">Ut enim ad minim veniam, quia voluptas sit, aspernatur aut odit aut fugit, sed quia Ut enim ad minim veniam, quia voluptas sit, aspernatur</p>
+            </div>
+        </div>
+        <div class="masterInfo masterInfo_reversed">
+            <div class="masterInfo__left"><img class="masterInfo__image" src="/images/88e2d5152392015.631d9c9496f2a.jpg" alt=""></div>
+            <div class="masterInfo__right">
+                <h2 class="title">Face care
+                    <div class="title__shadow">
+                        <p>Face care</p>
+                    </div>
+                </h2>
+                <p class="masterInfo__name"><span th:text="${masters.get(1).getMasterName() + ' '+ masters.get(1).getMasterSurname()}"></span></p>
+                <p class="masterInfo__description">Ut enim ad minim veniam, quia voluptas sit, aspernatur aut odit aut fugit, sed quia Ut enim ad minim veniam, quia voluptas sit, aspernatur</p>
+            </div>
+        </div>
+        <div class="masterInfo">
+            <div class="masterInfo__left"><img class="masterInfo__image" src="/images/b57178161266241.63c230e1a4410.jpg" alt=""></div>
+            <div class="masterInfo__right">
+                <h2 class="title">Lashes/Brows
+                    <div class="title__shadow">
+                        <p>Lashes/Brows</p>
+                    </div>
+                </h2>
+                <p class="masterInfo__name"><span th:text="${masters.get(2).getMasterName() + ' '+ masters.get(2).getMasterSurname()}"></span></p>
+                <p class="masterInfo__description">Ut enim ad minim veniam, quia voluptas sit, aspernatur aut odit aut fugit, sed quia Ut enim ad minim veniam, quia voluptas sit, aspernatur</p>
+            </div>
+        </div>
+        <div class="masterInfo masterInfo_reversed">
+            <div class="masterInfo__left"><img class="masterInfo__image" src="/images/f80cae98491289.5edda5f0b9e63.jpg" alt=""></div>
+            <div class="masterInfo__right">
+                <h2 class="title">Make UP
+                    <div class="title__shadow">
+                        <p>Make UP</p>
+                    </div>
+                </h2>
+                <p class="masterInfo__name"><span th:text="${masters.get(3).getMasterName() + ' '+ masters.get(3).getMasterSurname()}"></span></p>
+                <p class="masterInfo__description">Ut enim ad minim veniam, quia voluptas sit, aspernatur aut odit aut fugit, sed quia Ut enim ad minim veniam, quia voluptas sit, aspernatur</p>
+            </div>
+        </div>
+        <div class="masterInfo">
+            <div class="masterInfo__left"><img class="masterInfo__image" src="/images/224f3673871291.5d3f354f41e8c.jpg" alt=""></div>
+            <div class="masterInfo__right">
+                <h2 class="title">Hair care
+                    <div class="title__shadow">
+                        <p>Hair care</p>
+                    </div>
+                </h2>
+                <p class="masterInfo__name"> <span th:text="${masters.get(4).getMasterName() + ' '+ masters.get(4).getMasterSurname()}"></span></p>
+                <p class="masterInfo__description">Ut enim ad minim veniam, quia voluptas sit, aspernatur aut odit aut fugit, sed quia Ut enim ad minim veniam, quia voluptas sit, aspernatur</p>
+            </div>
+        </div>
+        <div class="masterInfo masterInfo_reversed">
+            <div class="masterInfo__left"><img class="masterInfo__image" src="/images/b3c9a9151677955.6310283d17943.jpg" alt=""></div>
+            <div class="masterInfo__right">
+                <h2 class="title">Nails
+                    <div class="title__shadow">
+                        <p>Nails</p>
+                    </div>
+                </h2>
+                <p class="masterInfo__name"> <span th:text="${masters.get(5).getMasterName() + ' ' + masters.get(5).getMasterSurname()}"></span></p>
+                <p class="masterInfo__description">Ut enim ad minim veniam, quia voluptas sit, aspernatur aut odit aut fugit, sed quia Ut enim ad minim veniam, quia voluptas sit, aspernatur</p>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="content footer__content">
+        <div class="footer__info">
+            <div class="footer__logo">Beauty<span>SOUL</span>Salon</div><a class="footer__phone" href="tel:8017771-11-77">8 (017) 771-11-77</a>
+        </div>
+        <div class="footer__menu">
+            <div class="footer__menu-link"><a href="/">About us</a></div>
+            <div class="footer__menu-link"><a href="/">Masters</a></div>
+            <div class="footer__menu-link"><a href="/">Our values</a></div>
+            <div class="footer__menu-link"><a href="/">Services</a></div>
+            <div class="footer__menu-link"><a href="/">Location</a></div>
+            <div class="footer__menu-link"><a href="/">Certificates</a></div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

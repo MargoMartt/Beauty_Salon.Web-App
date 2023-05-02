@@ -6,7 +6,6 @@ import com.example.beauty_salon.entity.ServiceEntity;
 import com.example.beauty_salon.entity.UsersEntity;
 import com.example.beauty_salon.enums.Discount;
 import com.example.beauty_salon.enums.RecordTime;
-import com.example.beauty_salon.enums.ServiceCode;
 import com.example.beauty_salon.service.BonusService;
 import com.example.beauty_salon.service.RecordService;
 import com.example.beauty_salon.service.ServiceService;
@@ -100,7 +99,7 @@ public class RecordData {
         ServiceEntity serviceEntity = service.getService(serviceId);
         UsersEntity user = usersService.getUser(userId);
 
-        System.out.println(user.getBalance());
+//        System.out.println(user.getBalance());
         double cost = serviceEntity.getServicePrice();
         int discount = 0;
         double totalCost = cost;

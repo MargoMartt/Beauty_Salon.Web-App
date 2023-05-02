@@ -11,37 +11,38 @@ import java.util.Collection;
 @NoArgsConstructor
 
 public class UsersEntity {
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_user", nullable = false)
     @Getter
     @Setter
     private int idUser;
-    
+
     @Column(name = "user_name", nullable = true, length = 45)
     @Getter
     @Setter
     private String userName;
-    
+
     @Column(name = "user_surname", nullable = true, length = 45)
     @Getter
     @Setter
     private String userSurname;
-    
+
     @Column(name = "login", nullable = true, length = 45)
     @Getter
     @Setter
     private String login;
-    
+
     @Column(name = "password", nullable = true, length = 45)
     @Getter
     @Setter
     private String password;
-    
+
     @Column(name = "balance", nullable = true, length = 45)
     @Getter
     @Setter
     private Double balance;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "usersIdUser", cascade = CascadeType.ALL)
     private Collection<UsersHasRoleEntity> usersHasRolesByIdUser;
 

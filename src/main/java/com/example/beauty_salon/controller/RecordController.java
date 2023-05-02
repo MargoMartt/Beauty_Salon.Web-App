@@ -50,6 +50,7 @@ public class RecordController {
             model.addAttribute("serviceId", id);
         }
 
+
         model.addAttribute("services", services);
         model.addAttribute("masters", masters);
         model.addAttribute("recordTime", recordTimes);
@@ -59,18 +60,21 @@ public class RecordController {
 
     //    @PreAuthorize("hasAuthority('Пользователь')")
     @PostMapping("/record")
-    public String record
-    (@RequestParam(name = "service", required = false) int serviceId,
-     @RequestParam(name = "master", required = false) int masterId,
-     @RequestParam(name = "recordTime", required = false) String recordTime,
-     @RequestParam(name = "date", required = false) String date, Model model) {
+    public String record (
+        @RequestParam(name = "service", required = false) int serviceId,
+        @RequestParam(name = "master", required = false) int masterId,
+        @RequestParam(name = "recordTime", required = false) String recordTime,
+        @RequestParam(name = "date", required = false) String date,
+        Model model
+    ) {
         boolean isRecord = recordService.isRecord(serviceId, masterId, date, recordTime);
 
-        if (isRecord == true) {
+        if (isRecord) {
+            System.out.println("1");
             List<ServiceEntity> services = service.getAllServices();
             List<BeautyMastersEntity> masters = masterData.allMasters();
             List<RecordTime> recordTimes = recordData.recordTimes();
-            String error = "WTF";
+            String error = "Record already exists";
 
             ServiceEntity returnService = service.getService(serviceId);
             model.addAttribute("serviceId", serviceId);
@@ -83,12 +87,12 @@ public class RecordController {
         }
         int idUser = 89;
         String money = recordData.makeRecord(idUser, serviceId, date, recordTime);
-        System.out.println(money);
         if (money.equals("noMoney")) {
+            System.out.println("2");
             List<ServiceEntity> services = service.getAllServices();
             List<BeautyMastersEntity> masters = masterData.allMasters();
             List<RecordTime> recordTimes = recordData.recordTimes();
-            String error = "WTF";
+            String error = "Not enough money";
 
             ServiceEntity returnService = service.getService(serviceId);
             model.addAttribute("serviceId", serviceId);
@@ -100,6 +104,7 @@ public class RecordController {
             return "record";
         }
         if (!money.equals("noMoney")) {
+            System.out.println("3");
             List<ServiceEntity> services = service.getAllServices();
             List<BeautyMastersEntity> masters = masterData.allMasters();
             List<RecordTime> recordTimes = recordData.recordTimes();
@@ -111,6 +116,8 @@ public class RecordController {
             model.addAttribute("recordTime", recordTimes);
 
             String success = "success";
+
+            System.out.println(success);
             String serviceName = service.getService(serviceId).getServiceName();
             model.addAttribute("success", success);
             model.addAttribute("serviceDone", serviceName);
@@ -120,6 +127,7 @@ public class RecordController {
             recordData.countRecord(idUser);
             return "record";
         }
+        System.out.println("4");
         return "record";
     }
 }

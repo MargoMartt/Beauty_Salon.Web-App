@@ -34,10 +34,10 @@ public class MasterData {
         List<ServiceEntity> nailCare = serviceData.specialServices("Nail Care");
 
         bestMasters.add(bestMaster(bodyCare));
-        bestMasters.add(bestMaster(hairCare));
-        bestMasters.add(bestMaster(makeUp));
         bestMasters.add(bestMaster(faceCare));
         bestMasters.add(bestMaster(lashes));
+        bestMasters.add(bestMaster(makeUp));
+        bestMasters.add(bestMaster(hairCare));
         bestMasters.add(bestMaster(nailCare));
 
         return bestMasters;
@@ -55,7 +55,9 @@ public class MasterData {
             System.out.println(id);
         }
         idMasters.addAll(id);
+        System.out.println(idMasters);
         for (Integer m: idMasters) {
+            System.out.println(m);
             masters.add(mastersService.getMaster(m));
         }
 //        for (int i = 0; i < idMasters.size(); i++) {

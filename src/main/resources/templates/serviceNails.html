@@ -3,27 +3,73 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-<table>
-    <thead>
-    <tr>
-        <th>Service</th>
-        <th>Cost</th>
-        <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="service : ${services}">
-        <td th:text="${service.getServiceName()}">Name</td>
-        <td th:text="${service.getServicePrice()}">Departure</td>
-        <td>
-            <a th:href="@{/record(service=${service.serviceId})}">Buy
-            </a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<section class="topSection">
+    <div class="topSection__header">
+        <header class="header">
+            <div class="content header__content"><a class="header__contact-link" href="tel:80177711177">8(017771 11
+                77)</a>
+                <nav><a href="/main">Main</a><a href="/serviceBody">Services</a><a href="/masters">Masters</a><a
+                        href="/certificate">Certificate</a><a href="/profile/futureRecords">Profile</a></nav>
+            </div>
+        </header>
+    </div><img class="topSection__image" src="/images/d9e2b378364335.5ca302525d922.jpg" alt="">
+    <div class="content topSection__content">
+        <h1>SERVICE MENU</h1>
+    </div>
+</section>
+<nav class="servicesMenu">
+    <div class="content servicesMenu__content"><a class="servicesMenu__link" href="/serviceBody">Body care</a><a class="servicesMenu__link" href="/serviceHair">Hair care</a><a class="servicesMenu__link" href="/serviceFace">Face care</a><a class="servicesMenu__link" href="/serviceMakeUp">Make Up</a><a class="servicesMenu__link" href="/serviceLashes">Lashes/Brows</a><a class="servicesMenu__link" href="/serviceNails">Nails</a></div>
+</nav>
+<section class="section serviceInfoSection">
+    <div class="content serviceInfoSection__content">
+        <div class="serviceInfoSection__title">
+            <h2 class="title">Nails
+                <div class="title__shadow">
+                    <p>Nails</p>
+                </div>
+            </h2>
+        </div>
+        <div class="serviceInfoSection__row">
+            <div class="serviceInfoSection__left"><img class="serviceInfoSection__image" src="/images/1dcdad163728583.63eafbf3119c7.jpg" alt="">
+            </div>
+            <div class="serviceInfoSection__right">
+                <div class="serviceInfoSection__text">Ut enim ad minim veniam, quia voluptas sit, aspernatur aut odit aut fugit, sed quia Ut enim ad minim veniam, quia voluptas sit, aspernatur</div>
+                <div class="serviceInfoSection__table">
+                    <table>
+                        <tr th:each="service : ${services}">
+                            <td th:text="${service.getServiceName()}"></td>
+                            <td th:text="${service.getServicePrice()}"></td>
+                            <td>
+                                <a th:href="@{/record(service=${service.serviceId})}">Enroll
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="content footer__content">
+        <div class="footer__info">
+            <div class="footer__logo">Beauty<span>SOUL</span>Salon</div><a class="footer__phone" href="tel:8017771-11-77">8 (017) 771-11-77</a>
+        </div>
+        <div class="footer__menu">
+            <div class="footer__menu-link"><a href="/">About us</a></div>
+            <div class="footer__menu-link"><a href="/">Masters</a></div>
+            <div class="footer__menu-link"><a href="/">Our values</a></div>
+            <div class="footer__menu-link"><a href="/">Services</a></div>
+            <div class="footer__menu-link"><a href="/">Location</a></div>
+            <div class="footer__menu-link"><a href="/">Certificates</a></div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

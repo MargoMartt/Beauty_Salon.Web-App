@@ -1,6 +1,8 @@
 package com.example.beauty_salon.service;
 
 import com.example.beauty_salon.dao.RecordRepository;
+import com.example.beauty_salon.dao.ServiceRepository;
+import com.example.beauty_salon.entity.BeautyMastersEntity;
 import com.example.beauty_salon.entity.RecordEntity;
 import com.example.beauty_salon.entity.ServiceEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,8 @@ public class RecordServiceImpl implements RecordService {
 
     @Autowired
     BeautyMastersService mastersService;
+    @Autowired
+    private ServiceRepository serviceRepository;
 
     @Override
     public void saveRecord(RecordEntity record) {
@@ -51,25 +55,23 @@ public class RecordServiceImpl implements RecordService {
 
     @Override
     public boolean isRecord(int serviceId, int masterId, String date, String time) {
-        boolean isRecord = true;
-        List<RecordEntity> recordEntities = recordRepository.getByServiceIdAndTime(serviceId, time);
-        if (recordEntities.isEmpty() == true) {
-            isRecord = false;
-        } else {
-            for (RecordEntity record : recordEntities) {
-                if (record.getDate().equals(date))
-                    return true;
-            }
-            if (isRecord == false) {
-                List<RecordEntity> allRecords = recordRepository.getByTime(time);
-                for (RecordEntity record : allRecords) {
-                    ServiceEntity service = (serviceService.getService(record.getServiceId()));
-                    if (mastersService.getMaster(service.getMasterId()).getMasterId() == masterId && record.getDate() == date)
-                        return true;
-                }
+        List<ServiceEntity> services = serviceService.getServicesByMasterID(masterId);
+
+        for (ServiceEntity service : services) {
+            List<RecordEntity> records = recordRepository.getByServiceIdAndTime(service.getServiceId(), time);
+
+            System.out.println(serviceId);
+            System.out.println(date);
+            System.out.println(time);
+            System.out.println(records);
+            System.out.println(records.size());
+
+            for (RecordEntity rec : records) {
+                if (rec.getDate().equals(date)) return true;
             }
         }
-        return isRecord;
+
+        return false;
     }
 
     @Override

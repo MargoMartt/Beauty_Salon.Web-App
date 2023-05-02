@@ -4,39 +4,92 @@
 <head>
     <head>
         <meta charset="UTF-8">
-        <title>Title</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="/styles/main.css">
+        <script defer src="/scripts/record.js"></script>
     </head>
 <body>
-
-<form method="post" action="/record">
-    <fieldset>
-        <legend>Creating project</legend>
-        <br>
-        Project name:
-        <select name="service" required>
-            <option th:each="service : ${services}"
-                    th:selected="${serviceId > 0 && serviceId == service.getServiceId()}"
-                    th:value="${service.getServiceId()}" th:text="${service.getServiceName()}"></option>
-        </select>
-        <br><br>
-        <select name="master" required>
-            <option th:each="master : ${masters}" th:value="${master.getMasterId()}"
-                    th:text="${master.getMasterSurname() + ' ' + master.getMasterName()}"></option>
-        </select>
-        <input type="date" name="date" required>
-        <select name="recordTime" required>
-            <option th:each="recordTime : ${recordTime}" th:value="${recordTime.getTime()}"
-                    th:text="${recordTime.getTime()}"></option>
-        </select>
-    </fieldset>
-    <input type="submit">
-</form>
-<p th:if="${error != null}">Error</p>
-
-<div th:if="${success != null}">
-    <span th:text="${serviceDone}"></span>
-    <span th:text="${date + ' ' + time}"></span>
-    <span th:text="${money}"></span>
+<div class="modal recordModal" data-th-classappend="${success != null && success.equals('success')} ? 'modal_opened' : ''" data-modal="recordConfirm">
+    <div class="modal__inner">
+        <a href="/serviceBody" class="modal__close"></a>
+        <div class="recordModal__title">
+            <h2 class="title">Record
+                <div class="title__shadow">
+                    <p>Record</p>
+                </div>
+            </h2>
+        </div>
+        <div class="recordModal__field" th:text="${'Service: ' + serviceDone}">Service</div>
+        <div class="recordModal__field" th:text="${'Date: ' + date + ' ' + time}">Date</div>
+        <div class="recordModal__field" th:text="${'Cost: ' + money + '$'}">Cost</div>
+    </div>
 </div>
+<section class="section record">
+    <script>console.log('hello')</script>
+    <div class="record__header">
+        <header class="header">
+            <div class="content header__content"><a class="header__contact-link" href="tel:80177711177">8(017771 11
+                77)</a>
+                <nav><a href="/main">Main</a><a href="/serviceBody">Services</a><a href="/masters">Masters</a><a
+                        href="/certificate">Certificate</a><a href="/profile/futureRecords">Profile</a></nav>
+            </div>
+        </header>
+    </div>
+    <div class="content record__content">
+        <form class="record__form" action="/record" method="post">
+            <div class="record__title">
+                <h2 class="title">Record
+                    <div class="title__shadow">
+                        <p>Record</p>
+                    </div>
+                </h2>
+            </div>
+            <div class="record__field">
+                <select name="service" required>
+                    <option th:each="service : ${services}"
+                            th:selected="${serviceId > 0 && serviceId == service.getServiceId()}"
+                            th:value="${service.getServiceId()}" th:text="${service.getServiceName()}"></option>
+                </select>
+            </div>
+            <div class="record__field">
+                <select name="master" required>
+                    <option th:each="master : ${masters}" th:value="${master.getMasterId()}"
+                             th:text="${master.getMasterSurname() + ' ' + master.getMasterName()}"></option>
+                </select>
+            </div>
+            <div class="record__field">
+                <input name="date" type="date" required>
+            </div>
+            <div class="record__field">
+                <select name="recordTime" required>
+                    <option th:each="recordTime : ${recordTime}" th:value="${recordTime.getTime()}"
+                            th:text="${recordTime.getTime()}"></option>
+                </select>
+            </div>
+            <div th:text="${error}"></div>
+            <div class="record__actions">
+                <button class="record__button">Confirm</button>
+            </div>
+        </form>
+        <div class="record__images"><img class="record__image-1" src="/images/73c5fe136187187.61f4dfcd358cc.jpg" alt=""><img class="record__image-2" src="/images/0d61c3164080099.63f09c0bcd78b.jpg" alt=""></div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="content footer__content">
+        <div class="footer__info">
+            <div class="footer__logo">Beauty<span>SOUL</span>Salon</div><a class="footer__phone" href="tel:8017771-11-77">8 (017) 771-11-77</a>
+        </div>
+        <div class="footer__menu">
+            <div class="footer__menu-link"><a href="/">About us</a></div>
+            <div class="footer__menu-link"><a href="/">Masters</a></div>
+            <div class="footer__menu-link"><a href="/">Our values</a></div>
+            <div class="footer__menu-link"><a href="/">Services</a></div>
+            <div class="footer__menu-link"><a href="/">Location</a></div>
+            <div class="footer__menu-link"><a href="/">Certificates</a></div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

@@ -2,12 +2,14 @@ package com.example.beauty_salon.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 @Entity
+@ToString
 @Table(name = "record", schema = "salonbeauty", catalog = "")
 public class RecordEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)

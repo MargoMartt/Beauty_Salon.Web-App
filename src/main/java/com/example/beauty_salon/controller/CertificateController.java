@@ -32,7 +32,7 @@ public class CertificateController {
     @PostMapping("/certificate")
     public String certificate(@RequestParam(name = "certificate", required = false) int certificate,
                               Model model) {
-        String response = certificateData.result(certificate, 75);
+        String response = certificateData.result(certificate, 89);
         List<Integer> certificates = certificateData.bonuses();
         model.addAttribute("certificates", certificates);
         model.addAttribute("response", response);

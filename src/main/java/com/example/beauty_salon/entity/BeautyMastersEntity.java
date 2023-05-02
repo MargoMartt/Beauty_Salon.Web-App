@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
@@ -36,6 +37,7 @@ public class BeautyMastersEntity {
     @Getter
     @Setter
     private Integer workExperience;
+
     @OneToMany(mappedBy = "serviceId")
     @Getter
     @Setter
