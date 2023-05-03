@@ -19,7 +19,7 @@
         </header>
       </div>
       <div class="content login__content">
-        <div class="login__form">
+        <form th:action="@{/login}" method="post" class="login__form">
           <div class="login__form-title">
             <h2 class="title">Login
               <div class="title__shadow">
@@ -29,16 +29,16 @@
           </div>
           <div class="login__form-field">
             <label class="field"><span>Email</span>
-              <input type="text"/>
+              <input name="username" type="text"/>
             </label>
           </div>
           <div class="login__form-field">
             <label class="field"><span>Password</span>
-              <input type="text"/>
+              <input name="password" type="text"/>
             </label>
           </div><span class="login__form-forgot-password">Forget password</span>
           <button class="login__form-button">Login/Registration</button>
-        </div>
+        </form>
         <div class="login__image"><img src="/images/6c1a02146867807.62b85aaf4631b.jpg" alt=""></div>
       </div>
     </section>
