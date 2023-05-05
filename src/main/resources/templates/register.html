@@ -1,18 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-  <h1>Register</h1>
-  <form action="/register" method="post">
-    <input type="text" name="username">
-    <input type="text" name="password">
-    <hr>
-    <input type="text" name="name">
-    <input type="text" name="surname">
-    <button>Submit</button>
-  </form>
+<div class="modal personalInfoModal">
+  <div class="modal__inner">
+    <div class="modal__close" onclick="this.closest('.modal').classList.remove('modal_opened')"></div>
+    <div class="modal__title">
+      <h2 class="title">About you
+        <div class="title__shadow">
+          <p>About you</p>
+        </div>
+      </h2>
+    </div>
+    <form action="" method="post">
+      <div class="modal__field">
+        <input class="fieldOutlined" type="text" placeholder="Name">
+      </div>
+      <div class="modal__field">
+        <input class="fieldOutlined" type="text" placeholder="Surname">
+      </div>
+      <div class="modal__actions">
+        <button class="button">Confirm</button>
+      </div>
+    </form>
+  </div>
+</div>
+<section class="section login">
+  <div class="login__header">
+    <header class="header">
+      <div class="content header__content"><a class="header__contact-link" href="tel:80177711177">8(017771 11 77)</a>
+        <nav><a href="/main">Main</a><a href="/services/serviceBody">Services</a><a href="/masters">Masters</a><a
+                href="/certificate">Certificate</a><a href="/profile/profileRecord">Profile</a></nav>
+      </div>
+    </header>
+  </div>
+  <div class="content login__content">
+    <form class="login__form" action="/register" method="post">
+      <div class="login__form-title">
+        <h2 class="title">Registration
+          <div class="title__shadow">
+            <p>Registration</p>
+          </div>
+        </h2>
+      </div>
+      <div class="login__form-field">
+        <label class="field"><span>Email</span>
+          <input type="email" name="username"/>
+        </label>
+      </div>
+      <div class="login__form-field">
+        <label class="field"><span>Password</span>
+          <input type="password" name="password"/>
+        </label>
+      </div>
+      <div class="login__form-field">
+        <label class="field"><span>Name</span>
+          <input type="text" name="name"/>
+        </label>
+      </div>
+      <div class="login__form-field">
+        <label class="field"><span>Surname</span>
+          <input type="text" name="surname"/>
+        </label>
+      </div>
+      <button class="login__form-button">Registration</button>
+    </form>
+    <div class="login__image"><img src="/images/6c1a02146867807.62b85aaf4631b.jpg" alt=""></div>
+  </div>
+</section>
+<footer class="footer">
+  <div class="content footer__content">
+    <div class="footer__info">
+      <div class="footer__logo">Beauty<span>SOUL</span>Salon</div><a class="footer__phone" href="tel:8017771-11-77">8 (017) 771-11-77</a>
+    </div>
+    <div class="footer__menu">
+      <div class="footer__menu-link"><a href="/">About us</a></div>
+      <div class="footer__menu-link"><a href="/">Masters</a></div>
+      <div class="footer__menu-link"><a href="/">Our values</a></div>
+      <div class="footer__menu-link"><a href="/">Services</a></div>
+      <div class="footer__menu-link"><a href="/">Location</a></div>
+      <div class="footer__menu-link"><a href="/">Certificates</a></div>
+    </div>
+  </div>
+</footer>
 </body>
 </html>

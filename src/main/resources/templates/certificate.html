@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-<div class="modal confirmCertificateModal">
+<div class="modal confirmCertificateModal" data-th-classappend="${response != null && response.equals('success')} ? 'modal_opened' : ''">
     <div class="modal__inner">
         <div class="modal__close" onclick="this.closest('.modal').classList.remove('modal_opened')"></div>
         <div class="modal__title">
@@ -25,8 +25,8 @@
     <div class="topSection__header">
         <header class="header">
             <div class="content header__content"><a class="header__contact-link" href="tel:80177711177">8(017771 11 77)</a>
-                <nav><a href="/main">Main</a><a href="/serviceBody">Services</a><a href="/masters">Masters</a><a
-                        href="/certificate">Certificate</a><a href="/profile/futureRecords">Profile</a></nav>
+                <nav><a href="/main">Main</a><a href="/services/serviceBody">Services</a><a href="/masters">Masters</a><a
+                        href="/certificate">Certificate</a><a href="/profile/profileRecord">Profile</a></nav>
             </div>
         </header>
     </div><img class="topSection__image" src="/images/73aa90137060289.620451747db68.jpg" alt="">
@@ -69,8 +69,8 @@
             <form class="onlineCertificateSection__form" action="" method="post">
                 <ul class="onlineCertificateSection__list">
                     <li>
-                        <label class="radio" th:value="${certificates.get(0)}">
-                            <input type="radio" name="certificate"/>
+                        <label class="radio">
+                            <input type="radio" name="certificate" th:value="${certificates.get(0)}" />
                             <span class="radio__view">
                             </span>
                             <span class="radio__label">20$
@@ -78,22 +78,25 @@
                         </label>
                     </li>
                     <li>
-                        <label class="radio" th:value="${certificates.get(1)}">
-                            <input type="radio" name="certificate"/>
+                        <label class="radio">
+                            <input type="radio" name="certificate" th:value="${certificates.get(1)}" />
                             <span class="radio__view"></span><span class="radio__label">50$</span>
                         </label>
                     </li>
                     <li>
-                        <label class="radio" th:value="${certificates.get(2)}">
-                            <input type="radio" name="certificate"/><span class="radio__view"></span><span class="radio__label">100$</span>
+                        <label class="radio">
+                            <input type="radio" name="certificate" th:value="${certificates.get(2)}" />
+                            <span class="radio__view"></span><span class="radio__label">100$</span>
                         </label>
                     </li>
                     <li>
-                        <label class="radio" th:value="${certificates.get(3)}">
-                            <input type="radio" name="certificate"/><span class="radio__view"></span><span class="radio__label">500$</span>
+                        <label class="radio">
+                            <input type="radio" name="certificate" th:value="${certificates.get(3)}" />
+                            <span class="radio__view"></span><span class="radio__label">500$</span>
                         </label>
                     </li>
                 </ul>
+                <div th:if="${response != null && response != 'success'}" th:text="${response}"></div>
                 <button class="button">Confirm</button>
             </form>
         </div>

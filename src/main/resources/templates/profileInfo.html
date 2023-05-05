@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,8 +14,8 @@
         <header class="header">
           <div class="content header__content"><a class="header__contact-link" href="tel:80177711177">8(017771 11
             77)</a>
-            <nav><a href="/main">Main</a><a href="/serviceBody">Services</a><a href="/masters">Masters</a><a
-                    href="/certificate">Certificate</a><a href="/profile/futureRecords">Profile</a></nav>
+            <nav><a href="/main">Main</a><a href="/services/serviceBody">Services</a><a href="/masters">Masters</a><a
+                    href="/certificate">Certificate</a><a href="/profile/profileRecord">Profile</a></nav>
           </div>
         </header>
       </div><img class="topSection__image" src="/images/eec9a797883659.5ecf96ec867c4.jpg" alt="">
@@ -23,9 +24,9 @@
       </div>
     </section>
     <nav class="profileMenu">
-      <div class="content profileMenu__content"><a class="profileMenu__link" href="/profile/profileRecord"> Records</a><a class="profileMenu__link" href="/profile/profileHistory"> History</a><a class="profileMenu__link" href="/profile/profileInfo"> Your Info</a><a class="profileMenu__link" href="/"> LogOut</a></div>
+      <div class="content profileMenu__content"><a class="profileMenu__link" href="/profile/profileRecord"> Records</a><a class="profileMenu__link" href="/profile/profileHistory"> History</a><a class="profileMenu__link" href="/profile/profileInfo"> Your Info</a><a class="profileMenu__link" href="/login"> LogOut</a></div>
     </nav>
-    <div class="modal">
+    <div class="modal" data-th-classappend="${giveCertificate != null && giveCertificate.equals('giveCertificate')} ? 'modal_opened' : ''">
       <div class="modal__inner">
         <div class="modal__close" onclick="this.closest('.modal').classList.remove('modal_opened')"></div>
         <div class="modal__title">
@@ -35,17 +36,20 @@
                 </div>
               </h2>
         </div>
+        <form action="/profile/info/giveCertificate" method="post">
         <div class="modal__field">
-              <input class="fieldOutlined" type="email" placeholder="Email">
+              <input class="fieldOutlined" type="text" placeholder="Email" name="email">
         </div>
-        <div class="modal__field"><span class="labelOutlined">Cost</span>
+        <div class="modal__field"><span class="labelOutlined">Cost <span th:text="${certificate}"></span> </span>
         </div>
+        <span th:if="${answerCertificate != null && answerCertificate == 'noUser'}" th:text="Check email"></span>
         <div class="modal__actions">
-              <button class="button">Confirm</button>
+              <button class="button" >Confirm</button>
         </div>
+        </form>
       </div>
     </div>
-    <div class="modal">
+    <div class="modal" data-th-classappend="${balance != null && balance.equals('balance')} ? 'modal_opened' : ''">
       <div class="modal__inner">
         <div class="modal__close" onclick="this.closest('.modal').classList.remove('modal_opened')"></div>
         <div class="modal__title">
@@ -55,21 +59,23 @@
                 </div>
               </h2>
         </div>
+        <form action="/profile/info/replenishBalance" method="post">
         <div class="modal__field">
-              <input class="fieldOutlined" type="number" placeholder="Card number">
+              <input class="fieldOutlined" type="number" placeholder="Card number" name = "card">
         </div>
         <div class="modal__field">
-              <input class="fieldOutlined" type="number" placeholder="CVV">
+              <input class="fieldOutlined" type="number" placeholder="CVV" name = "CVV">
         </div>
         <div class="modal__field">
-              <input class="fieldOutlined" type="number" placeholder="Transfer amount">
+              <input class="fieldOutlined" type="number" placeholder="Transfer amount" name = "sum">
         </div>
         <div class="modal__actions">
               <button class="button">Confirm</button>
         </div>
+        </form>
       </div>
     </div>
-    <div class="modal">
+    <div class="modal" data-th-classappend="${password != null && password.equals('password')} ? 'modal_opened' : ''">
       <div class="modal__inner">
         <div class="modal__close" onclick="this.closest('.modal').classList.remove('modal_opened')"></div>
         <div class="modal__title">
@@ -79,21 +85,24 @@
                 </div>
               </h2>
         </div>
+        <form method="post" action="/profile/info/changePassword">
         <div class="modal__field">
-              <input class="fieldOutlined" type="password" placeholder="Old password">
+              <input class="fieldOutlined" type="password" placeholder="Old password" name = "oldPassword">
         </div>
         <div class="modal__field">
-              <input class="fieldOutlined" type="password" placeholder="New password">
+              <input class="fieldOutlined" type="password" placeholder="New password" name = "newPassword">
         </div>
         <div class="modal__field">
-              <input class="fieldOutlined" type="password" placeholder="New Password">
+              <input class="fieldOutlined" type="password" placeholder="New Password" name = "newPassword2">
         </div>
         <div class="modal__actions">
               <button class="button">Confirm</button>
         </div>
+          <span th:if="${answer != null && answer != 'success'}" th:text="${answer}"></span>
+        </form>
       </div>
     </div>
-    <div class="modal personalInfoModal">
+    <div class="modal personalInfoModal" data-th-classappend="${info != null && info.equals('info')} ? 'modal_opened' : ''">
       <div class="modal__inner">
         <div class="modal__close" onclick="this.closest('.modal').classList.remove('modal_opened')"></div>
         <div class="modal__title">
@@ -103,12 +112,12 @@
                 </div>
               </h2>
         </div>
-        <form action="" method="post">
+        <form action="/profile/info/changeInfo" method="post">
           <div class="modal__field">
-                <input class="fieldOutlined" type="text" placeholder="Name">
+                <input class="fieldOutlined" type="text" placeholder="Name" name="name" th:value="${user.getName()}">
           </div>
           <div class="modal__field">
-                <input class="fieldOutlined" type="text" placeholder="Surname">
+                <input class="fieldOutlined" type="text" placeholder="Surname" name="surname" th:value="${user.getSurname()}">
           </div>
           <div class="modal__actions">
                 <button class="button">Confirm</button>
@@ -153,7 +162,7 @@
       </div>
       <div class="profileActionsSection">
         <div class="content profileActionsSection__content">
-          <div class="profileActionsSection__left"><a class="profileActionsSection__link" href="">Change password</a><a class="profileActionsSection__link" href="">Give a certificate</a><a class="profileActionsSection__link" href="">Replenish the balance</a><a class="profileActionsSection__link" href="">Change personal info</a></div>
+          <div class="profileActionsSection__left"><a class="profileActionsSection__link" href="/profile/info/changePassword">Change password</a><a class="profileActionsSection__link" href="/profile/info/giveCertificate">Give a certificate</a><a class="profileActionsSection__link" href="/profile/info/replenishBalance">Replenish the balance</a><a class="profileActionsSection__link" href="/profile/info/changeInfo">Change personal info</a></div>
           <div class="profileActionsSection__image"><img src="/images/e4531c97883659.5ecf96ec853c2.jpg" alt=""></div>
         </div>
       </div>

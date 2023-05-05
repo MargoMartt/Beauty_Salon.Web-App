@@ -28,7 +28,7 @@ public class LoginController {
     PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @GetMapping("/login")
-    public String login () {
+    public String login() {
         return "login";
     }
 
@@ -41,24 +41,29 @@ public class LoginController {
     @PostMapping("/register")
     @PermitAll
     public String registerForm(
-        @RequestParam(name = "username", required = true) String username,
-        @RequestParam(name = "password", required = true) String password,
-        @RequestParam(name = "name", required = true) String name,
-        @RequestParam(name = "surname", required = true) String surname,
-        Model model
+            @RequestParam(name = "username", required = true) String username,
+            @RequestParam(name = "password", required = true) String password,
+            @RequestParam(name = "name", required = true) String name,
+            @RequestParam(name = "surname", required = true) String surname,
+            Model model
     ) {
+        UsersEntity getUser = usersService.getByLogin(username);
+
+        if (getUser != null)
+            return "redirect:/login";
+
         UsersEntity user = new UsersEntity();
         user.setLogin(username);
         user.setPassword(passwordEncoder.encode(password));
         user.setUserName(name);
         user.setUserSurname(surname);
-
+        user.setBalance(0.0);
         System.out.println(user);
         usersService.saveUser(user);
 
         UsersEntity returnUser = usersService.getByLogin(username);
         UsersHasRoleEntity role = new UsersHasRoleEntity();
-        role.setRoleIdRole(2);
+        role.setRoleIdRole(1);
         role.setUsersIdUser(returnUser.getIdUser());
         roleHasUsersService.saveRoleHasUsers(role);
 

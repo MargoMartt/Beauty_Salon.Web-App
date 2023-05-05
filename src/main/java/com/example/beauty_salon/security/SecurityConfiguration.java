@@ -33,17 +33,17 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
-            .authorizeHttpRequests((requests) -> requests
-                    .requestMatchers("/", "/main", "/register", "/login", "/images/**", "/fonts/**", "/styles/**", "/scripts/**").permitAll()
-                    .requestMatchers("/admin/**").hasRole("Администратор")
-                    .anyRequest().authenticated()
-            )
-            .formLogin((form) -> form
-                    .loginPage("/login")
-                    .defaultSuccessUrl("/main")
-                    .permitAll()
-            )
-            .logout((logout) -> logout.permitAll());
+                .authorizeHttpRequests((requests) -> requests
+                        .requestMatchers("/", "/main", "/register", "/login", "/masters", "/services/*", "/bonus", "/images/**", "/fonts/**", "/styles/**", "/scripts/**").permitAll()
+//                        .requestMatchers("/admin/**").hasRole("Администратор")
+                        .anyRequest().authenticated()
+                )
+                .formLogin((form) -> form
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/main")
+                        .permitAll()
+                )
+                .logout((logout) -> logout.permitAll());
 
         return http.build();
     }

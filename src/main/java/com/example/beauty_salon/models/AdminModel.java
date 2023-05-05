@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -27,6 +28,9 @@ public class AdminModel {
 
     @Autowired
     BonusService bonusService;
+
+    @Autowired
+    ServiceData serviceData;
 
     public ArrayList<BeautyMastersEntity> mastersList() {
         ArrayList<BeautyMastersEntity> mastersList = (ArrayList<BeautyMastersEntity>) beautyMastersService.getAllMasters();
@@ -263,5 +267,69 @@ public class AdminModel {
         report.setDiscountCount(countDiscount);
         report.setCertificateCount(countCertificate);
         return report;
+    }
+
+    public ArrayList<Double> percent() {
+        ArrayList<Double> percent = new ArrayList<>();
+        ArrayList<Double> profit = profitability();
+        double max = 0;
+        for (Double d : profit) {
+            if (d>max)
+                d= max;
+
+            for (int i = 0; i < profit.size(); i++) {
+                double sum = profit.get(0)/max*100;
+                percent.add(sum);
+            }
+        }
+        return percent;
+    }
+
+    public ArrayList<Double> profitability() {
+        ArrayList<Double> profitability = new ArrayList<>();
+
+        List<ServiceEntity> body = serviceData.specialServices("Body Care");
+        List<ServiceEntity> face = serviceData.specialServices("Face Care");
+        List<ServiceEntity> hair = serviceData.specialServices("Hair Care");
+        List<ServiceEntity> make = serviceData.specialServices("MakeUp");
+        List<ServiceEntity> lashes = serviceData.specialServices("Lashes/Brows");
+        List<ServiceEntity> nail = serviceData.specialServices("Nail Care");
+
+        profitability.add(sumProfits(body));
+        profitability.add(sumProfits(face));
+        profitability.add(sumProfits(hair));
+        profitability.add(sumProfits(make));
+        profitability.add(sumProfits(lashes));
+        profitability.add(sumProfits(nail));
+
+        return profitability;
+    }
+
+    public Double sumProfits(List<ServiceEntity> services) {
+        ArrayList<RecordEntity> records = (ArrayList<RecordEntity>) recordService.getAllRecord();
+        double sum = 0;
+        for (ServiceEntity serv : services) {
+            for (RecordEntity rec : records) {
+                if (serv.getServiceId() == rec.getServiceId())
+                    sum += rec.getTotalCost();
+            }
+        }
+        return sum;
+    }
+    public void print(){
+        File file = new File("report.txt");
+        Report report = report();
+
+        String text = report.toString();
+
+        try (FileWriter fw = new FileWriter(file);
+             BufferedWriter bf = new BufferedWriter(fw);
+             PrintWriter out = new PrintWriter(bf))
+        {
+            out.print(text);
+            System.out.println("Successfully written data to the file");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

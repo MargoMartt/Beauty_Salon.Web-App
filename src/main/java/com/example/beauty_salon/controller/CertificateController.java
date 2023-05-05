@@ -1,6 +1,10 @@
 package com.example.beauty_salon.controller;
 
+import com.example.beauty_salon.entity.UsersEntity;
 import com.example.beauty_salon.enums.Certificate;
+import com.example.beauty_salon.service.UsersService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
 import com.example.beauty_salon.models.CertificateData;
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -22,6 +26,8 @@ public class CertificateController {
     @Autowired
     CertificateData certificateData;
 
+    @Autowired
+    UsersService usersService;
     @GetMapping("/certificate")
     public String certificate(Model model) {
         List<Integer> certificates = certificateData.bonuses();
@@ -30,9 +36,11 @@ public class CertificateController {
     }
 
     @PostMapping("/certificate")
-    public String certificate(@RequestParam(name = "certificate", required = false) int certificate,
+    public String certificate(@AuthenticationPrincipal UserDetails userDetails, @RequestParam(name = "certificate", required = false) int certificate,
                               Model model) {
-        String response = certificateData.result(certificate, 89);
+        System.out.println(certificate);
+        UsersEntity user = usersService.getByLogin(userDetails.getUsername());
+        String response = certificateData.result(certificate, user.getIdUser());
         List<Integer> certificates = certificateData.bonuses();
         model.addAttribute("certificates", certificates);
         model.addAttribute("response", response);

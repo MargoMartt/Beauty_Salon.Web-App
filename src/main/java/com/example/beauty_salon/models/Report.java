@@ -16,4 +16,16 @@ private int certificateCount;
 private int discountCount;
 private int usersCount;
 private int recordCount;
+
+    @Override
+    public String toString() {
+        return "Report{" +
+                "serviceCount=" + serviceCount +
+                ", mastersCount=" + mastersCount +
+                ", certificateCount=" + certificateCount +
+                ", discountCount=" + discountCount +
+                ", usersCount=" + usersCount +
+                ", recordCount=" + recordCount +
+                '}';
+    }
 }

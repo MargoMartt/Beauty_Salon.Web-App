@@ -37,6 +37,8 @@ public class AdminController {
     BonusService bonusService;
     @Autowired
     UsersService usersService;
+    @Autowired
+    ServiceData serviceData;
 
     @GetMapping("/mastersAction")
     public String allMasters(Model model) {
@@ -164,7 +166,7 @@ public class AdminController {
                             @RequestParam(name = "email", required = false) String email,
                             @RequestParam(name = "discount", required = false) int discount) {
         adminModel.editBonus(id, discount);
-        return "redirect:/admin/adminBonusData";
+        return "redirect:/admin/bonusAction";
     }
 
     @GetMapping("/bonusAction/delete/{id}")
@@ -202,9 +204,15 @@ public class AdminController {
 
     @GetMapping("/report")
     public String report(Model model) {
+        adminModel.print();
         Report report = adminModel.report();
         model.addAttribute("report", report);
         return "adminReport";
     }
-
+    @GetMapping("/profitability")
+    public String profitability(Model model){
+        ArrayList<Double> percent = adminModel.percent();
+        model.addAttribute("percent", percent);
+        return "adminProfitability";
+    }
 }

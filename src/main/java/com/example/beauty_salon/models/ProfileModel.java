@@ -3,6 +3,8 @@ package com.example.beauty_salon.models;
 import com.example.beauty_salon.entity.*;
 import com.example.beauty_salon.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -25,6 +27,7 @@ public class ProfileModel {
 
     @Autowired
     BonusService bonusService;
+    PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public ArrayList<RecordProfile> futureRecords(int id) {
 
@@ -119,7 +122,7 @@ public class ProfileModel {
 
             if (newPassword.equals(newPassword2)) {
 
-                user.setPassword(newPassword);
+                user.setPassword(passwordEncoder.encode(newPassword));
                 usersService.saveUser(user);
                 return "success";
             } else return "notTheSame";

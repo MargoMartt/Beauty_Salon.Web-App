@@ -556,7 +556,7 @@ img {
     justify-content: space-around;
     width: 100%;
     background-color: #f1f1f1;
-    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e")
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http:/www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e")
 }
 
 .graph__bar {
@@ -677,7 +677,7 @@ img {
     -ms-flex-align: center;
     align-items: center;
     height: 100vh;
-    background: url(/images/5a4472101029235.5f15e5abf0401.jpg) center no-repeat;
+    background: url(../../../images/5a4472101029235.5f15e5abf0401.jpg) center no-repeat;
     background-size: cover;
     color: #eae6e2;
     text-align: center
@@ -1021,16 +1021,15 @@ img {
     margin: 60px auto 0
 }
 
-.locationSection__image {
+.locationSection__frame {
     margin-top: 70px;
-    height: 535px
+    height: 535px;
+    width: 100%
 }
 
-.locationSection__image img {
+.locationSection__frame iframe {
     height: 100%;
-    width: 100%;
-    -o-object-fit: cover;
-    object-fit: cover
+    width: 100%
 }
 
 .locationSection__contacts {
@@ -1211,7 +1210,10 @@ img {
     display: flex;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
-    justify-content: space-between
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
 }
 
 .login__image img {

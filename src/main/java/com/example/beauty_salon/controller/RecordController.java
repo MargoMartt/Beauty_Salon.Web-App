@@ -2,6 +2,7 @@ package com.example.beauty_salon.controller;
 
 import com.example.beauty_salon.entity.BeautyMastersEntity;
 import com.example.beauty_salon.entity.ServiceEntity;
+import com.example.beauty_salon.entity.UsersEntity;
 import com.example.beauty_salon.enums.RecordTime;
 import com.example.beauty_salon.models.MasterData;
 import com.example.beauty_salon.models.RecordData;
@@ -10,6 +11,8 @@ import com.example.beauty_salon.service.RecordService;
 import com.example.beauty_salon.service.ServiceService;
 import com.example.beauty_salon.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,7 +53,6 @@ public class RecordController {
             model.addAttribute("serviceId", id);
         }
 
-
         model.addAttribute("services", services);
         model.addAttribute("masters", masters);
         model.addAttribute("recordTime", recordTimes);
@@ -58,15 +60,16 @@ public class RecordController {
         return "record";
     }
 
-    //    @PreAuthorize("hasAuthority('Пользователь')")
     @PostMapping("/record")
-    public String record (
-        @RequestParam(name = "service", required = false) int serviceId,
-        @RequestParam(name = "master", required = false) int masterId,
-        @RequestParam(name = "recordTime", required = false) String recordTime,
-        @RequestParam(name = "date", required = false) String date,
-        Model model
+    public String record(@AuthenticationPrincipal UserDetails userDetails,
+                         @RequestParam(name = "service", required = false) int serviceId,
+                         @RequestParam(name = "master", required = false) int masterId,
+                         @RequestParam(name = "recordTime", required = false) String recordTime,
+                         @RequestParam(name = "date", required = false) String date,
+                         Model model
     ) {
+        UsersEntity userDB = usersService.getByLogin(userDetails.getUsername());
+
         boolean isRecord = recordService.isRecord(serviceId, masterId, date, recordTime);
 
         if (isRecord) {
@@ -85,7 +88,7 @@ public class RecordController {
 
             return "record";
         }
-        int idUser = 89;
+        int idUser = userDB.getIdUser();
         String money = recordData.makeRecord(idUser, serviceId, date, recordTime);
         if (money.equals("noMoney")) {
             System.out.println("2");
