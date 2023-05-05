@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/main.css">
+  </head>
+  <body class="profile">
+    <section class="topSection">
+      <div class="topSection__header">
+        <header class="header">
+          <div class="content header__content"><a class="header__contact-link" href="tel:80177711177">8(017771 11
+            77)</a>
+            <nav><a href="/main">Main</a><a href="/serviceBody">Services</a><a href="/masters">Masters</a><a
+                    href="/certificate">Certificate</a><a href="/profile/futureRecords">Profile</a></nav>
+          </div>
+        </header>
+      </div><img class="topSection__image" src="/images/eec9a797883659.5ecf96ec867c4.jpg" alt="">
+      <div class="content topSection__content">
+        <h1>PROFILE</h1>
+      </div>
+    </section>
+    <nav class="profileMenu">
+      <div class="content profileMenu__content"><a class="profileMenu__link" href="/profile/profileRecord"> Records</a><a class="profileMenu__link" href="/profile/profileHistory"> History</a><a class="profileMenu__link" href="/profile/profileInfo"> Your Info</a><a class="profileMenu__link" href="/"> LogOut</a></div>
+    </nav>
+    <div class="modal">
+      <div class="modal__inner">
+        <div class="modal__close" onclick="this.closest('.modal').classList.remove('modal_opened')"></div>
+        <div class="modal__title">
+              <h2 class="title">Certificate
+                <div class="title__shadow">
+                  <p>Certificate</p>
+                </div>
+              </h2>
+        </div>
+        <div class="modal__field">
+              <input class="fieldOutlined" type="email" placeholder="Email">
+        </div>
+        <div class="modal__field"><span class="labelOutlined">Cost</span>
+        </div>
+        <div class="modal__actions">
+              <button class="button">Confirm</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal">
+      <div class="modal__inner">
+        <div class="modal__close" onclick="this.closest('.modal').classList.remove('modal_opened')"></div>
+        <div class="modal__title">
+              <h2 class="title">Balance
+                <div class="title__shadow">
+                  <p>Balance</p>
+                </div>
+              </h2>
+        </div>
+        <div class="modal__field">
+              <input class="fieldOutlined" type="number" placeholder="Card number">
+        </div>
+        <div class="modal__field">
+              <input class="fieldOutlined" type="number" placeholder="CVV">
+        </div>
+        <div class="modal__field">
+              <input class="fieldOutlined" type="number" placeholder="Transfer amount">
+        </div>
+        <div class="modal__actions">
+              <button class="button">Confirm</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal">
+      <div class="modal__inner">
+        <div class="modal__close" onclick="this.closest('.modal').classList.remove('modal_opened')"></div>
+        <div class="modal__title">
+              <h2 class="title">Password
+                <div class="title__shadow">
+                  <p>Password</p>
+                </div>
+              </h2>
+        </div>
+        <div class="modal__field">
+              <input class="fieldOutlined" type="password" placeholder="Old password">
+        </div>
+        <div class="modal__field">
+              <input class="fieldOutlined" type="password" placeholder="New password">
+        </div>
+        <div class="modal__field">
+              <input class="fieldOutlined" type="password" placeholder="New Password">
+        </div>
+        <div class="modal__actions">
+              <button class="button">Confirm</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal personalInfoModal">
+      <div class="modal__inner">
+        <div class="modal__close" onclick="this.closest('.modal').classList.remove('modal_opened')"></div>
+        <div class="modal__title">
+              <h2 class="title">About you
+                <div class="title__shadow">
+                  <p>About you</p>
+                </div>
+              </h2>
+        </div>
+        <form action="" method="post">
+          <div class="modal__field">
+                <input class="fieldOutlined" type="text" placeholder="Name">
+          </div>
+          <div class="modal__field">
+                <input class="fieldOutlined" type="text" placeholder="Surname">
+          </div>
+          <div class="modal__actions">
+                <button class="button">Confirm</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <section class="section">
+      <div class="yourInfoSection">
+        <div class="content yourInfoSection__content">
+          <div class="yourInfoSection__left"><img class="yourInfoSection__image" src="/images/3b0da2149953425.62f12c8e35139.jpg" alt=""></div>
+          <div class="yourInfoSection__right">
+            <div class="yourInfoSection__title">
+                    <h2 class="title">Your info
+                      <div class="title__shadow">
+                        <p>Your info</p>
+                      </div>
+                    </h2>
+            </div>
+            <div class="yourInfoSection__table-title"><span th:text="${user.getName() + ' ' + user.getSurname()}"></span>
+            </div>
+            <table class="yourInfoSection__table">
+              <tr>
+                <td>Email</td>
+                <td th:text="${user.getEmail()}"></td>
+              </tr>
+              <tr>
+                <td>Balance</td>
+                <td th:text="${user.getBalance()}"></td>
+              </tr>
+              <tr>
+                <td>Certificate</td>
+                <td th:text="${user.getCertificate()}"></td>
+              </tr>
+              <tr>
+                <td>Bonus</td>
+                <td th:text="${user.getBonus()}"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="profileActionsSection">
+        <div class="content profileActionsSection__content">
+          <div class="profileActionsSection__left"><a class="profileActionsSection__link" href="">Change password</a><a class="profileActionsSection__link" href="">Give a certificate</a><a class="profileActionsSection__link" href="">Replenish the balance</a><a class="profileActionsSection__link" href="">Change personal info</a></div>
+          <div class="profileActionsSection__image"><img src="/images/e4531c97883659.5ecf96ec853c2.jpg" alt=""></div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="content footer__content">
+        <div class="footer__info">
+          <div class="footer__logo">Beauty<span>SOUL</span>Salon</div><a class="footer__phone" href="tel:8017771-11-77">8 (017) 771-11-77</a>
+        </div>
+        <div class="footer__menu">
+          <div class="footer__menu-link"><a href="/">About us</a></div>
+          <div class="footer__menu-link"><a href="/">Masters</a></div>
+          <div class="footer__menu-link"><a href="/">Our values</a></div>
+          <div class="footer__menu-link"><a href="/">Services</a></div>
+          <div class="footer__menu-link"><a href="/">Location</a></div>
+          <div class="footer__menu-link"><a href="/">Certificates</a></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

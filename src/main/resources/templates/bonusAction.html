@@ -9,17 +9,17 @@
 <table>
   <tbody>
   <tr th:each="bonus : ${bonuses}">
-    <td th:text="${bonus.getUser()}">Departure</td>
-    <td th:text="${bonus.getEmail()}">Departure</td>
-    <td th:text="${bonus.getBonus()}">Name</td>
+    <td th:text="${bonus.getUser()}"></td>
+    <td th:text="${bonus.getEmail()}"></td>
+    <td th:text="${bonus.getBonus()}"></td>
     <td>
-      <a th:href="@{/admin/bonusAction/edit/{id}(id=${bonus.getIdBonus()})}">Edit</a>
+      <a class="admin__action" th:href="@{/admin/bonusAction/edit/{id}(id=${bonus.getIdBonus()})}">Edit</a>
     </td>
     <td>
-      <a th:href="@{/admin/bonusAction/delete/{id}(id=${bonus.getIdBonus()})}">Delete</a>
+      <a class="admin__action" th:href="@{/admin/bonusAction/delete/{id}(id=${bonus.getIdBonus()})}">Delete</a>
     </td>
   </tr>
   </tbody>
 </table>
-<a th:href="@{/admin/bonusAction/add}">Add</a></body>
+<a class="admin__action" th:href="@{/admin/bonusAction/add}">Add</a></body>
 </html>

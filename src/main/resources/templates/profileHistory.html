@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/main.css">
+  </head>
+  <body class="profile">
+    <section class="topSection">
+      <div class="topSection__header">
+        <header class="header">
+          <div class="content header__content"><a class="header__contact-link" href="tel:80177711177">8(017771 11
+            77)</a>
+            <nav><a href="/main">Main</a><a href="/serviceBody">Services</a><a href="/masters">Masters</a><a
+                    href="/certificate">Certificate</a><a href="/profile/futureRecords">Profile</a></nav>
+          </div>
+        </header>
+      </div><img class="topSection__image" src="/images/eec9a797883659.5ecf96ec867c4.jpg" alt="">
+      <div class="content topSection__content">
+        <h1>PROFILE</h1>
+      </div>
+    </section>
+    <nav class="profileMenu">
+      <div class="content profileMenu__content"><a class="profileMenu__link" href="/profile/profileRecord"> Records</a><a class="profileMenu__link" href="/profile/profileHistory"> History</a><a class="profileMenu__link" href="/profile/profileInfo"> Your Info</a><a class="profileMenu__link" href="/"> LogOut</a></div>
+    </nav>
+    <section class="historySection">
+      <div class="content historySection__content">
+        <div class="historySection__left"><img class="historySection__image" src="/images/897791114868105.6043597a6488f.jpg" alt=""></div>
+        <div class="historySection__right">
+          <div class="historySection__title">
+                <h2 class="title">Activity history
+                  <div class="title__shadow">
+                    <p>Activity history</p>
+                  </div>
+                </h2>
+          </div>
+          <div class="historySection__table-wrapper">
+            <table class="historySection__table">
+              <tr th:each="record : ${activityHistory}">
+                <td th:text="${record.getServiceName()}">Name</td>
+                <td th:text="${record.getMasterName()}">Departure</td>
+                <td th:text="${record.getDate()}">Name</td>
+                <td th:text="${record.getCost()}">Departure</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="content footer__content">
+        <div class="footer__info">
+          <div class="footer__logo">Beauty<span>SOUL</span>Salon</div><a class="footer__phone" href="tel:8017771-11-77">8 (017) 771-11-77</a>
+        </div>
+        <div class="footer__menu">
+          <div class="footer__menu-link"><a href="/">About us</a></div>
+          <div class="footer__menu-link"><a href="/">Masters</a></div>
+          <div class="footer__menu-link"><a href="/">Our values</a></div>
+          <div class="footer__menu-link"><a href="/">Services</a></div>
+          <div class="footer__menu-link"><a href="/">Location</a></div>
+          <div class="footer__menu-link"><a href="/">Certificates</a></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

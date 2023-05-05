@@ -11,6 +11,8 @@ import com.example.beauty_salon.service.RecordService;
 import com.example.beauty_salon.service.ServiceService;
 import com.example.beauty_salon.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +25,7 @@ import java.util.List;
 public class MainController {
 
     @RequestMapping("/main")
-    public String mainInfo(Model model) {
+    public String mainInfo(@AuthenticationPrincipal UserDetails userDetails, Model model) {
         return "main";
     }
 }

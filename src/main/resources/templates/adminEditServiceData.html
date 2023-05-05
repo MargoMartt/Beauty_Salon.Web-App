@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/main.css">
+  </head>
+  <body class="admin">
+    <section class="section adminEditDataLayout">
+      <div class="adminEditDataLayout__header">
+        <header class="header">
+          <div class="content header__content"><a class="header__contact-link" href="tel:80177711177">8(017771 11
+            77)</a>
+            <nav><a href="/main">Main</a><a href="/serviceBody">Services</a><a href="/masters">Masters</a><a
+                    href="/certificate">Certificate</a><a href="/profile/futureRecords">Profile</a></nav>
+          </div>
+        </header>
+      </div>
+      <div class="content adminEditDataLayout__content">
+        <div class="adminEditDataLayout__left">
+          <div class="adminEditDataLayout__title">
+            <h2 class="title">Service data
+              <div class="title__shadow">
+                <p>Service data</p>
+              </div>
+            </h2>
+          </div>
+          <form class="adminEditDataLayout__form" method="post" th:action="@{/admin/serviceAction/add}">
+            <div class="adminEditDataLayout__form-fields">
+              <div class="adminEditDataLayout__field">
+                <label class="field"><span>Name</span>
+                  <input type="text" name="name"/>
+                </label>
+              </div>
+              <div class="adminEditDataLayout__field">
+                <label class="select"><span>Type</span>
+                  <select name="type" required>
+                    <option th:each="type : ${types}"
+                            th:value="${type.getCode()}" th:text="${type.getCode()}"></option>
+                  </select>
+                </label>
+              </div>
+              <div class="adminEditDataLayout__field">
+                <label class="field"><span>Cost</span>
+                  <input type="text" name="cost"/>
+                </label>
+              </div>
+              <div class="adminEditDataLayout__field">
+                <label class="select"><span>Master</span>
+                  <select name="master" required>
+                    <option th:each="master : ${masters}" th:value="${master.getMasterId()}"
+                            th:text="${master.getMasterSurname() + ' ' + master.getMasterName()}"></option>
+                  </select>
+                </label>
+              </div>
+            </div>
+            <div class="adminEditDataLayout__actions">
+              <button class="button">Save</button>
+            </div>
+          </form>
+        </div>
+        <div class="adminEditDataLayout__right"><img class="adminEditDataLayout__image-1" src="/images/73c5fe136187187.61f4dfcd358cc.jpg" alt=""><img class="adminEditDataLayout__image-2" src="/images/0d61c3164080099.63f09c0bcd78b.jpg" alt=""></div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="content footer__content">
+        <div class="footer__info">
+          <div class="footer__logo">Beauty<span>SOUL</span>Salon</div><a class="footer__phone" href="tel:8017771-11-77">8 (017) 771-11-77</a>
+        </div>
+        <div class="footer__menu">
+          <div class="footer__menu-link"><a href="/">About us</a></div>
+          <div class="footer__menu-link"><a href="/">Masters</a></div>
+          <div class="footer__menu-link"><a href="/">Our values</a></div>
+          <div class="footer__menu-link"><a href="/">Services</a></div>
+          <div class="footer__menu-link"><a href="/">Location</a></div>
+          <div class="footer__menu-link"><a href="/">Certificates</a></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

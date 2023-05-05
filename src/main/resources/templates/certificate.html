@@ -3,59 +3,170 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-
-<form method="post" action="/certificate">
-    <fieldset>
-        <legend>Certificate</legend>
-        <br>
-        <label  th:value="${certificates.get(0)}"  for="20">
-            <input
-                type="radio"
-                id="20"
-                th:value="${certificates.get(0)}"
-                name="certificate"
-            />
-            20
-        </label>
-        <label  th:value="${certificates.get(1)}"  for="50">
-            <input
-                    type="radio"
-                    id="50"
-                    th:value="${certificates.get(1)}"
-                    name="certificate"
-            />
-            50
-        </label>
-        <label  th:value="${certificates.get(2)}"  for="100">
-            <input
-                    type="radio"
-                    id="100"
-                    th:value="${certificates.get(2)}"
-                    name="certificate"
-            />
-            100
-        </label>
-        <label  th:value="${certificates.get(3)}"  for="200">
-            <input
-                    type="radio"
-                    id="200"
-                    th:value="${certificates.get(3)}"
-                    name="certificate"
-            />
-            200
-        </label>
-    </fieldset>
-    <input type="submit">
-</form>
-
-<p th:if="${response == 'noMoney'}">no Money</p>
-<p th:if="${response == 'alreadyExist'}">alreadyExist</p>
-<p th:if="${response == 'success'}">
-    <span th:text="${response}">
-    </span></p>
-
+<div class="modal confirmCertificateModal">
+    <div class="modal__inner">
+        <div class="modal__close" onclick="this.closest('.modal').classList.remove('modal_opened')"></div>
+        <div class="modal__title">
+            <h2 class="title">Bonus
+                <div class="title__shadow">
+                    <p>Bonus</p>
+                </div>
+            </h2>
+        </div><span class="labelOutlined">Cost: 500$</span>
+    </div>
+</div>
+<section class="topSection">
+    <div class="topSection__header">
+        <header class="header">
+            <div class="content header__content"><a class="header__contact-link" href="tel:80177711177">8(017771 11 77)</a>
+                <nav><a href="/main">Main</a><a href="/serviceBody">Services</a><a href="/masters">Masters</a><a
+                        href="/certificate">Certificate</a><a href="/profile/futureRecords">Profile</a></nav>
+            </div>
+        </header>
+    </div><img class="topSection__image" src="/images/73aa90137060289.620451747db68.jpg" alt="">
+    <div class="content topSection__content">
+        <h1>CERTIFICATE</h1>
+    </div>
+</section>
+<section class="printedCertificateSection">
+    <div class="content printedCertificateSection__content">
+        <div class="printedCertificateSection__left">
+            <div class="printedCertificateSection__title">
+                <h2 class="title">Printed Certificate
+                    <div class="title__shadow">
+                        <p>Printed Certificate</p>
+                    </div>
+                </h2>
+            </div>
+            <div class="printedCertificateSection__list"><span>20$,</span><span>50$,</span><span>100$,</span><span>500$</span></div>
+            <div class="printedCertificateSection__description">
+                <p>Ut enim ad minim veniam, quia voluptas sit, aspernatur aut odit aut fugit, sed quia Ut enim ad minim veniam, quia voluptas sit, aspernatur</p>
+            </div>
+        </div>
+        <div class="printedCertificateSection__right"><img class="printedCertificateSection__image" src="/images/6f1163149415127.62e788d0d6301.jpg" alt=""></div>
+    </div>
+</section>
+<section class="section onlineCertificateSection">
+    <div class="content onlineCertificateSection__content">
+        <div class="onlineCertificateSection__left"><img class="onlineCertificateSection__image" src="/images/0a92c8149415127.62e788d0d1375.jpg" alt=""></div>
+        <div class="onlineCertificateSection__right">
+            <div class="onlineCertificateSection__title">
+                <h2 class="title">Online Certificate
+                    <div class="title__shadow">
+                        <p>Online Certificate</p>
+                    </div>
+                </h2>
+            </div>
+            <div class="onlineCertificateSection__description">
+                <p>Ut enim ad minim veniam, quia voluptas sit, aspernatur aut odit aut fugit, sed quia Ut enim ad minim veniam, quia voluptas sit, aspernatur</p>
+            </div>
+            <form class="onlineCertificateSection__form" action="" method="post">
+                <ul class="onlineCertificateSection__list">
+                    <li>
+                        <label class="radio" th:value="${certificates.get(0)}">
+                            <input type="radio" name="certificate"/>
+                            <span class="radio__view">
+                            </span>
+                            <span class="radio__label">20$
+                        </span>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio" th:value="${certificates.get(1)}">
+                            <input type="radio" name="certificate"/>
+                            <span class="radio__view"></span><span class="radio__label">50$</span>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio" th:value="${certificates.get(2)}">
+                            <input type="radio" name="certificate"/><span class="radio__view"></span><span class="radio__label">100$</span>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio" th:value="${certificates.get(3)}">
+                            <input type="radio" name="certificate"/><span class="radio__view"></span><span class="radio__label">500$</span>
+                        </label>
+                    </li>
+                </ul>
+                <button class="button">Confirm</button>
+            </form>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="content footer__content">
+        <div class="footer__info">
+            <div class="footer__logo">Beauty<span>SOUL</span>Salon</div><a class="footer__phone" href="tel:8017771-11-77">8 (017) 771-11-77</a>
+        </div>
+        <div class="footer__menu">
+            <div class="footer__menu-link"><a href="/">About us</a></div>
+            <div class="footer__menu-link"><a href="/">Masters</a></div>
+            <div class="footer__menu-link"><a href="/">Our values</a></div>
+            <div class="footer__menu-link"><a href="/">Services</a></div>
+            <div class="footer__menu-link"><a href="/">Location</a></div>
+            <div class="footer__menu-link"><a href="/">Certificates</a></div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
+
+
+<!--<form method="post" action="/certificate">-->
+<!--    <fieldset>-->
+<!--        <legend>Certificate</legend>-->
+<!--        <br>-->
+<!--        <label  th:value="${certificates.get(0)}"  for="20">-->
+<!--            <input-->
+<!--                type="radio"-->
+<!--                id="20"-->
+<!--                th:value="${certificates.get(0)}"-->
+<!--                name="certificate"-->
+<!--            />-->
+<!--            20-->
+<!--        </label>-->
+<!--        <label  th:value="${certificates.get(1)}"  for="50">-->
+<!--            <input-->
+<!--                    type="radio"-->
+<!--                    id="50"-->
+<!--                    th:value="${certificates.get(1)}"-->
+<!--                    name="certificate"-->
+<!--            />-->
+<!--            50-->
+<!--        </label>-->
+<!--        <label  th:value="${certificates.get(2)}"  for="100">-->
+<!--            <input-->
+<!--                    type="radio"-->
+<!--                    id="100"-->
+<!--                    th:value="${certificates.get(2)}"-->
+<!--                    name="certificate"-->
+<!--            />-->
+<!--            100-->
+<!--        </label>-->
+<!--        <label  th:value="${certificates.get(3)}"  for="200">-->
+<!--            <input-->
+<!--                    type="radio"-->
+<!--                    id="200"-->
+<!--                    th:value="${certificates.get(3)}"-->
+<!--                    name="certificate"-->
+<!--            />-->
+<!--            200-->
+<!--        </label>-->
+<!--    </fieldset>-->
+<!--    <input type="submit">-->
+<!--</form>-->
+
+<!--<p th:if="${response == 'noMoney'}">no Money</p>-->
+<!--<p th:if="${response == 'alreadyExist'}">alreadyExist</p>-->
+<!--<p th:if="${response == 'success'}">-->
+<!--    <span th:text="${response}">-->
+<!--    </span></p>-->
+
+<!--</body>-->
+<!--</html>-->

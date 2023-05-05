@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/main.css">
+  </head>
+  <body class="admin">
+    <section class="topSection">
+      <div class="topSection__header">
+        <header class="header">
+          <div class="content header__content"><a class="header__contact-link" href="tel:80177711177">8(017771 11
+            77)</a>
+            <nav><a href="/main">Main</a><a href="/serviceBody">Services</a><a href="/masters">Masters</a><a
+                    href="/certificate">Certificate</a><a href="/profile/futureRecords">Profile</a></nav>
+          </div>
+        </header>
+      </div><img class="topSection__image" src="/images/b879cb161622361.63f21a78489e5.jpg" alt="">
+      <div class="content topSection__content">
+        <h1>ADMIN</h1>
+      </div>
+    </section>
+    <nav class="adminMenu"><a class="adminMenu__link" href="/admin/mastersAction">Masters Action</a><a class="adminMenu__link" href="/admin/serviceAction">Services Action</a><a class="adminMenu__link" href="/admin/bonusAction">Bonus</a><a class="adminMenu__link" href="">Profitability</a><a class="adminMenu__link" href="/admin/report">Report</a><a class="adminMenu__link" href="/admin/profit">Profit</a></nav>
+    <section class="section adminBaseSection">
+      <div class="content adminBaseSection__content">
+        <div class="adminBaseSection__left"><img class="adminBaseSection__image" src="/images/d7ded2110994693.5ff989bc1c63f.jpg" alt=""></div>
+        <div class="adminBaseSection__right">
+          <div class="adminBaseSection__title">
+            <h2 class="title" style="text-align: left; margin-left: 150px">Report
+              <div class="title__shadow">
+                <p>Report</p>
+              </div>
+            </h2>
+          </div>
+          <div class="adminTable">
+            <div class="adminTable__table-wrapper">
+              <table class="adminTable__table">
+                <tr>
+                  <td>Users</td>
+                  <td th:text="${report.getUsersCount()}"></td>
+                </tr>
+                <tr>
+                  <td>Masters</td>
+                  <td th:text="${report.getMastersCount()}"></td>
+                </tr>
+                <tr>
+                  <td>Services</td>
+                  <td th:text="${report.getServiceCount()}"></td>
+                </tr>
+                <tr>
+                  <td>Records</td>
+                  <td th:text="${report.getRecordCount()}"></td>
+                </tr>
+                <tr>
+                  <td>Certificates</td>
+                  <td th:text="${report.getCertificateCount()}"></td>
+                </tr>
+                <tr>
+                  <td>Discounts</td>
+                  <td th:text="${report.getDiscountCount()}"></td>
+                </tr>
+              </table>
+            </div>
+            <div class="admin__action">Print</div>
+          </div>
+        </div>
+      </div>
+      <div class="content admin__logoutContent"><a class="admin__logoutButton" href="/logout">LogOut</a></div>
+    </section>
+    <footer class="footer">
+      <div class="content footer__content">
+        <div class="footer__info">
+          <div class="footer__logo">Beauty<span>SOUL</span>Salon</div><a class="footer__phone" href="tel:8017771-11-77">8 (017) 771-11-77</a>
+        </div>
+        <div class="footer__menu">
+          <div class="footer__menu-link"><a href="/">About us</a></div>
+          <div class="footer__menu-link"><a href="/">Masters</a></div>
+          <div class="footer__menu-link"><a href="/">Our values</a></div>
+          <div class="footer__menu-link"><a href="/">Services</a></div>
+          <div class="footer__menu-link"><a href="/">Location</a></div>
+          <div class="footer__menu-link"><a href="/">Certificates</a></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

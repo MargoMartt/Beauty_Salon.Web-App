@@ -16,17 +16,17 @@
     </thead>
     <tbody>
     <tr th:each="master : ${masters}">
-        <td th:text="${master.getMasterName() + ' ' + master.getMasterSurname()}">Name</td>
-        <td th:text="${master.getActivity()}">Departure</td>
-        <td th:text="${master.getWorkExperience()}">Name</td>
+        <td class="admin__action" th:text="${master.getMasterName() + ' ' + master.getMasterSurname()}">Name</td>
+        <td class="admin__action" th:text="${master.getActivity()}">Departure</td>
+        <td class="admin__action" th:text="${master.getWorkExperience()}">Name</td>
         <td>
-            <a th:href="@{/admin/mastersAction/edit/{id}(id=${master.getMasterId()})}">Edit</a>
+            <a class="admin__action" th:href="@{/admin/mastersAction/edit/{id}(id=${master.getMasterId()})}">Edit</a>
         </td>
         <td>
-            <a th:href="@{/admin/mastersAction/delete/{id}(id=${master.getMasterId()})}">Delete</a>
+            <a class="admin__action" th:href="@{/admin/mastersAction/delete/{id}(id=${master.getMasterId()})}">Delete</a>
         </td>
     </tr>
     </tbody>
 </table>
-<a th:href="@{/admin/mastersAction/add}">Add</a></body>
+<a class="admin__action" th:href="@{/admin/mastersAction/add}">Add</a></body>
 </html>

@@ -3,9 +3,9 @@ package com.example.beauty_salon.security;
 import com.example.beauty_salon.dao.RoleHasUsersRepository;
 import com.example.beauty_salon.dao.RoleRepository;
 import com.example.beauty_salon.dao.UsersRepository;
-import com.example.beauty_salon.entity.Role;
 import com.example.beauty_salon.entity.RoleEntity;
 import com.example.beauty_salon.entity.UsersEntity;
+import com.example.beauty_salon.service.RoleHasUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,38 +15,42 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
-public class CustomUserDetailsService implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
+
     @Autowired
-    private UsersRepository usersRepository;
+    private UsersRepository userRepository;
+
+    @Autowired
+    private RoleHasUsersRepository roleHasUsersService;
 
     @Autowired
     private RoleRepository roleRepository;
 
-    @Autowired
-    private RoleHasUsersRepository roleHasUsersRepository;
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UsersEntity user = usersRepository.getByLogin(username);
-        RoleEntity role = roleRepository.getByIdRole(roleHasUsersRepository.findUsersHasRoleEntityByUsersIdUser(user.getIdUser()).getRoleIdRole());
-
+        UsersEntity user = userRepository.getByLogin(username);
+        System.out.println("loadUsersByUsername");
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }
+        System.out.println("success");
+        System.out.println(user);
+        return new User(user.getLogin(), user.getPassword(), getAuthorities(user));
+    }
 
-        List<GrantedAuthority> authorities = new ArrayList<>();
+    private Set<GrantedAuthority> getAuthorities(UsersEntity user) {
+        Set<GrantedAuthority> authorities = new HashSet<>();
+        int userId = user.getIdUser();
+        System.out.println("vov");
+        int roleId = roleHasUsersService.findUsersHasRoleEntityByUsersIdUser(userId).getRoleIdRole();
+        RoleEntity role = roleRepository.getByIdRole(roleId);
 
         authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
 
-        System.out.println("loadUserByUsername");
-        System.out.println(username);
-        System.out.println(user);
-        System.out.println(authorities);
-
-        return new User(user.getLogin(), user.getPassword(), authorities);
+        return authorities;
     }
 }

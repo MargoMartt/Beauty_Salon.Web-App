@@ -1,14 +1,10 @@
-// const modalElements = document.querySelectorAll("modal")
-//
-// modalElements.forEach((element) => {
-//   const modalID = element.dataset.modal
-//   const triggerElements = document.querySelectorAll(
-//     `[data-modalTrigger="${modalID}"]`,
-//   )
-//
-//   triggerElements.forEach((triggerElement) => {
-//     triggerElement.addEventListener('click', () => {
-//       element.classList('modal_opened')
-//     })
-//   })
-// })
+const triggers = document.querySelectorAll("[data-modaltrigger]")
+
+triggers.forEach((element) => {
+  const modalID = element.dataset.modaltrigger
+  const modal = document.querySelector(`[data-modal="${modalID}"]`)
+
+  element.addEventListener('click', () => {
+    modal.classList.add('modal_opened')
+  })
+})

@@ -20,35 +20,35 @@ public class ProfileController {
     @Autowired
     ProfileModel profileModel;
 
-    @GetMapping("/futureRecords")
+    @GetMapping("/profileRecord")
     public String futureRecords(Model model) {
         ArrayList<RecordProfile> futureRecords = profileModel.futureRecords(89);
         model.addAttribute("futureRecords", futureRecords);
-        return "futureRecords";
+        return "profileRecord";
     }
 
-    @GetMapping("/futureRecords/refuse/{id}")
+    @GetMapping("/profileRecord/refuse/{id}")
     public String futureRecords(@PathVariable(name = "id") int id, Model model) {
 
         ArrayList<RecordProfile> futureRecords = profileModel.futureRecords(89);
         model.addAttribute("futureRecords", futureRecords);
         profileModel.refuse(89, id);
-        return "redirect:/futureRecords";
+        return "redirect:/profileRecord";
     }
 
-    @GetMapping("/activityHistory")
+    @GetMapping("/profileHistory")
     public String activityHistory(Model model) {
         ArrayList<RecordProfile> activityHistory = profileModel.recordHistory(89);
         model.addAttribute("activityHistory", activityHistory);
-        return "activityHistory";
+        return "profileHistory";
     }
 
-    @GetMapping("/info")
+    @GetMapping("/profileInfo")
     public String info(Model model) {
         UserInfo user = profileModel.user(89);
         model.addAttribute("user", user);
         model.addAttribute("certificate", user.getCertificate());
-        return "userInfo";
+        return "profileInfo";
     }
 
     @PostMapping("/info/changePassword")

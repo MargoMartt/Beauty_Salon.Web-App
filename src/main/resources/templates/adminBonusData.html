@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/main.css">
+  </head>
+  <body class="admin">
+    <section class="topSection">
+      <div class="topSection__header">
+        <header class="header">
+          <div class="content header__content"><a class="header__contact-link" href="tel:80177711177">8(017771 11
+            77)</a>
+            <nav><a href="/main">Main</a><a href="/admin/serviceBody">Services</a><a href="/admin/masters">Masters</a><a
+                    href="/admin/certificate">Certificate</a><a href="/admin/profile/futureRecords">Profile</a></nav>
+          </div>
+        </header>
+      </div><img class="topSection__image" src="/images/b879cb161622361.63f21a78489e5.jpg" alt="">
+      <div class="content topSection__content">
+        <h1>ADMIN</h1>
+      </div>
+    </section>
+    <nav class="adminMenu"><a class="adminMenu__link" href="/admin/mastersAction">Masters Action</a><a class="adminMenu__link" href="/admin/serviceAction">Services Action</a><a class="adminMenu__link" href="/admin/bonusAction">Bonus</a><a class="adminMenu__link" href="">Profitability</a><a class="adminMenu__link" href="/admin/report">Report</a><a class="adminMenu__link" href="/admin/profit">Profit</a></nav>
+    <section class="section adminBaseSection">
+      <div class="content adminBaseSection__content">
+        <div class="adminBaseSection__left"><img class="adminBaseSection__image" src="/images/867252139310065.622d9d77ddc44.jpg" alt=""></div>
+        <div class="adminBaseSection__right">
+          <div class="adminBaseSection__title">
+            <h2 class="title">Bonus data
+              <div class="title__shadow">
+                <p>Bonus data</p>
+              </div>
+            </h2>
+          </div>
+          <div class="adminTable">
+            <div class="adminTable__table-wrapper">
+              <table class="adminTable__table">
+                <tr th:each="bonus : ${bonuses}">
+                  <td th:text="${bonus.getUser()}"></td>
+                  <td th:text="${bonus.getEmail()}"></td>
+                  <td th:text="${bonus.getBonus()}"></td>
+                  <td>
+                    <a class="admin__action" th:href="@{/admin/bonusAction/edit/{id}(id=${bonus.getIdBonus()})}">Edit</a>
+                  </td>
+                  <td>
+                    <a class="admin__action" th:href="@{/admin/bonusAction/delete/{id}(id=${bonus.getIdBonus()})}">Delete</a>
+                  </td>
+                </tr>
+              </table>
+            </div><a class="admin__action" th:href="@{/admin/bonusAction/add}">Add New</a>
+          </div>
+        </div>
+      </div>
+      <div class="content admin__logoutContent"><a class="admin__logoutButton" href="/logout">LogOut</a></div>
+    </section>
+    <footer class="footer">
+      <div class="content footer__content">
+        <div class="footer__info">
+          <div class="footer__logo">Beauty<span>SOUL</span>Salon</div><a class="footer__phone" href="tel:8017771-11-77">8 (017) 771-11-77</a>
+        </div>
+        <div class="footer__menu">
+          <div class="footer__menu-link"><a href="/">About us</a></div>
+          <div class="footer__menu-link"><a href="/">Masters</a></div>
+          <div class="footer__menu-link"><a href="/">Our values</a></div>
+          <div class="footer__menu-link"><a href="/">Services</a></div>
+          <div class="footer__menu-link"><a href="/">Location</a></div>
+          <div class="footer__menu-link"><a href="/">Certificates</a></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

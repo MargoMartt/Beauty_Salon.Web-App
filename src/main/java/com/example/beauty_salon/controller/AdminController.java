@@ -42,14 +42,14 @@ public class AdminController {
     public String allMasters(Model model) {
         ArrayList<BeautyMastersEntity> mastersList = adminModel.mastersList();
         model.addAttribute("masters", mastersList);
-        return "mastersAction";
+        return "adminMasterData";
     }
 
     @GetMapping("/mastersAction/edit/{id}")
     public String editMaster(@PathVariable(name = "id") int id, Model model) {
         BeautyMastersEntity master = mastersService.getMaster(id);
         model.addAttribute("master", master);
-        return "editMaster";
+        return "adminEditMasterData";
     }
 
     @PostMapping("/mastersAction/edit/{id}")
@@ -70,7 +70,7 @@ public class AdminController {
 
     @GetMapping("/mastersAction/add")
     public String addMaster(Model model) {
-        return "addMaster";
+        return "adminEditMasterData";
     }
 
     @PostMapping("/mastersAction/add")
@@ -87,7 +87,7 @@ public class AdminController {
     public String allServices(Model model) {
         List<ServiceModel> services = adminModel.allServices();
         model.addAttribute("services", services);
-        return "serviceAction";
+        return "adminServiceData";
     }
 
     @GetMapping("/serviceAction/edit/{id}")
@@ -99,7 +99,7 @@ public class AdminController {
 
         ArrayList<ServiceCode> types = adminModel.serviceTypes();
         model.addAttribute("types", types);
-        return "editService";
+        return "adminEditServiceData";
     }
 
     @PostMapping("/serviceAction/edit/{id}")
@@ -126,7 +126,7 @@ public class AdminController {
         ArrayList<ServiceCode> types = adminModel.serviceTypes();
         model.addAttribute("types", types);
 
-        return "addService";
+        return "adminEditServiceData";
     }
 
     @PostMapping("/serviceAction/add")
@@ -143,7 +143,7 @@ public class AdminController {
     public String allBonuses(Model model) {
         List<BonusData> bonuses = adminModel.allBonuses();
         model.addAttribute("bonuses", bonuses);
-        return "bonusAction";
+        return "adminBonusData";
     }
 
     @GetMapping("/bonusAction/edit/{id}")
@@ -156,7 +156,7 @@ public class AdminController {
 
         UsersEntity user = usersService.getUser(bonus.getIdUser());
         model.addAttribute("user", user);
-        return "editBonus";
+        return "adminEditBonusData";
     }
 
     @PostMapping("/bonusAction/edit/{id}")
@@ -164,20 +164,20 @@ public class AdminController {
                             @RequestParam(name = "email", required = false) String email,
                             @RequestParam(name = "discount", required = false) int discount) {
         adminModel.editBonus(id, discount);
-        return "redirect:/admin/bonusAction";
+        return "redirect:/admin/adminBonusData";
     }
 
     @GetMapping("/bonusAction/delete/{id}")
     public String deleteBonus(@PathVariable(name = "id") int id, Model model) {
         adminModel.deleteBonus(id);
-        return "redirect:/admin/bonusAction";
+        return "redirect:/admin/adminBonusData";
     }
 
     @GetMapping("/bonusAction/add")
     public String addBonus(Model model) {
         ArrayList<Discount> discounts = adminModel.discounts();
         model.addAttribute("discounts", discounts);
-        return "addBonus";
+        return "adminEditBonusData";
     }
 
     @PostMapping("/bonusAction/add")
@@ -197,14 +197,14 @@ public class AdminController {
 
         model.addAttribute("profits", profits);
         model.addAttribute("resultProfit", resultProfit);
-        return "profit";
+        return "adminProfit";
     }
 
     @GetMapping("/report")
     public String report(Model model) {
         Report report = adminModel.report();
         model.addAttribute("report", report);
-        return "report";
+        return "adminReport";
     }
 
 }

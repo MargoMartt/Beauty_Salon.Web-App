@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <script src="/scripts/modal.js" defer></script>
+  </head>
+  <body class="profile">
+    <section class="topSection">
+      <div class="topSection__header">
+        <header class="header">
+          <div class="content header__content"><a class="header__contact-link" href="tel:80177711177">8(017771 11
+            77)</a>
+            <nav><a href="/main">Main</a><a href="/serviceBody">Services</a><a href="/masters">Masters</a><a
+                    href="/certificate">Certificate</a><a href="/profile/futureRecords">Profile</a></nav>
+          </div>
+        </header>
+      </div><img class="topSection__image" src="/images/eec9a797883659.5ecf96ec867c4.jpg" alt="">
+      <div class="content topSection__content">
+        <h1>PROFILE</h1>
+      </div>
+    </section>
+    <nav class="profileMenu">
+      <div class="content profileMenu__content"><a class="profileMenu__link" href="/profile/profileRecord"> Records</a><a class="profileMenu__link" href="/profile/profileHistory"> History</a><a class="profileMenu__link" href="/profile/profileInfo"> Your Info</a><a class="profileMenu__link" href="/"> LogOut</a></div>
+    </nav>
+    <div class="modal refuseRecordModal" data-modal="refuseRecord">
+      <div class="modal__inner">
+        <div class="modal__close" onclick="this.closest('.modal').classList.remove('modal_opened')"></div>
+        <div class="modal__title">
+              <h2 class="title">Refuse
+                <div class="title__shadow">
+                  <p>Refuse</p>
+                </div>
+              </h2>
+        </div>
+        <form action="/" method="get">
+          <input type="hidden" name="record" value="1">
+          <div class="refuseRecordModal__text">Are you sure?</div>
+          <div class="refuseRecordModal__actions">
+                <button class="button">Confirm</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <section>
+      <div class="yourRecordsSection">
+        <div class="content yourRecordsSection__content">
+          <div class="yourRecordsSection__left"><img class="yourRecordsSection__image" src="/images/a48e4f114868105.6043597a63c24.jpg" alt=""></div>
+          <div class="yourRecordsSection__right">
+            <div class="yourRecordsSection__title">
+                    <h2 class="title">Your records
+                      <div class="title__shadow">
+                        <p>Your records</p>
+                      </div>
+                    </h2>
+            </div>
+            <div class="yourRecordsSection__table-wrapper">
+              <table class="yourRecordsSection__table">
+                <tr th:each="record : ${futureRecords}">
+                  <td th:text="${record.getServiceName()}">Name</td>
+                  <td th:text="${record.getMasterName()}">Departure</td>
+                  <td th:text="${record.getDate()}">Name</td>
+                  <td th:text="${record.getCost()}">Departure</td>
+                  <td>
+                    <a th:href="@{/futureRecords/refuse/{id}(id=${record.getIdRecord()})}">Refuse</a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="content footer__content">
+        <div class="footer__info">
+          <div class="footer__logo">Beauty<span>SOUL</span>Salon</div><a class="footer__phone" href="tel:8017771-11-77">8 (017) 771-11-77</a>
+        </div>
+        <div class="footer__menu">
+          <div class="footer__menu-link"><a href="/">About us</a></div>
+          <div class="footer__menu-link"><a href="/">Masters</a></div>
+          <div class="footer__menu-link"><a href="/">Our values</a></div>
+          <div class="footer__menu-link"><a href="/">Services</a></div>
+          <div class="footer__menu-link"><a href="/">Location</a></div>
+          <div class="footer__menu-link"><a href="/">Certificates</a></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

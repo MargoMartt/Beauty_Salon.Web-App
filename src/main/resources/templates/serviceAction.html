@@ -8,19 +8,19 @@
 <body>
 <table>
   <tbody>
-  <tr th:each="service : ${services}">
-    <td th:text="${service.getServiceName()}">Name</td>
-    <td th:text="${service.getServiceCode()}">Departure</td>
-    <td th:text="${service.getMasterName()}">Name</td>
-    <td th:text="${service.getCost()}">Name</td>
+  <tr class="admin__action" th:each="service : ${services}">
+    <td class="admin__action" th:text="${service.getServiceName()}">Name</td>
+    <td class="admin__action" th:text="${service.getServiceCode()}">Departure</td>
+    <td class="admin__action" th:text="${service.getMasterName()}">Name</td>
+    <td class="admin__action" th:text="${service.getCost()}">Name</td>
     <td>
-      <a th:href="@{/admin/serviceAction/edit/{id}(id=${service.getIdService()})}">Edit</a>
+      <a class="admin__action" th:href="@{/admin/serviceAction/edit/{id}(id=${service.getIdService()})}">Edit</a>
     </td>
     <td>
-      <a th:href="@{/admin/serviceAction/delete/{id}(id=${service.getIdService()})}">Delete</a>
+      <a class="admin__action" th:href="@{/admin/serviceAction/delete/{id}(id=${service.getIdService()})}">Delete</a>
     </td>
   </tr>
   </tbody>
 </table>
-<a th:href="@{/admin/serviceAction/add}">Add</a></body>
+<a class="admin__action" th:href="@{/admin/serviceAction/add}">Add</a></body>
 </html>

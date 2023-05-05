@@ -3,6 +3,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Collection;
 
@@ -28,7 +31,7 @@ public class UsersEntity {
     @Setter
     private String userSurname;
 
-    @Column(name = "login", nullable = true, length = 45)
+    @Column(name = "username", nullable = true, length = 45)
     @Getter
     @Setter
     private String login;
